@@ -1,5 +1,11 @@
 {% extends "layout.njk" %}
 
+{% block head %}
+    <link rel="stylesheet" href="css/home.css">
+
+{% endblock head %}
+
+
 {% block content %}
 {# MAIN ELEMENT #}
 
@@ -7,9 +13,10 @@
     {# HOME #}
     <section class="home">
         <div class="home_container grid">
-            <div class="home_data">
-                <div class="home_title">NEW <br><span>ARRIVALS</span></div>
-            </div>
+            
+            <div class="home_img"></div>
+            <div class="home_title">NEW <br><span>ARRIVALS</span></div>
+           {#  <a href="#" class="button">GO SHOPPING</a> #}
         </div>
     </section>
 
