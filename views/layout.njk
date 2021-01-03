@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="/css/main.css">
+
+        <title>SAINTZ</title>
+        
+        {% block head %}{% endblock head %}
+
+    </head>
+
+    <body>
+         {# HEADER ELEMENTS #}
+        <header>
+            <nav class="nav grid">
+                
+                {# LOGO ELEMENT - 1 #}
+                <div>
+                    <a href="#" class="nav_logo">SAINTZ</a>
+                </div>
+                
+                {# MENU ELEMENT - 2 #}
+                <div class="nav_menu" id='nav-menu'>
+                    <ul class="nav_list">
+                        <li class="nav_item"><a href="#home" class="nav_link active">Home</a></li>{# use  ACTIVE class later  #}                  
+                        <li class="nav_item"><a href="#products" class="nav_link">Products</a></li>
+                        <li class="nav_item"><a href="#seasons" class="nav_link">Seasons</a></li>
+                        <li class="nav_item"><a href="#subscribe" class="nav_link">Subscribe</a></li>
+                        <li class="nav_item"><a href="#about" class="nav_link">About</a></li>
+                        
+                    </ul>
+                </div>
+
+                {# MENU ICONS ELEMENT - 3 #}
+                <div>
+                    <a href="views\cart\cart.njk">cart</a>
+                    <i class='bx bx-cart nav_cart'></i>
+                    <i class='bx bx-menu nav_toggle' id='nav-toggle'></i>
+                </div>
+
+            </nav>
+        </header>
+
+        {% block content %}{% endblock content %}
+
+        {# FOOTER #}
+        <script src="/js/main.js"></script>
+    </body>
+</html>
