@@ -159,13 +159,3 @@ header {
     color: var(--red-color);
 }
 
-
-.home {
-    padding-top: 6rem;
-    background-color: var(--gray-color-light);
-}
-
-.home_container {
-    height: calc(100vh - 1rem);
-}
-  
