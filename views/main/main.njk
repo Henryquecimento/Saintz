@@ -5,21 +5,34 @@
 
 {% endblock head %}
 
-
 {% block content %}
-{# MAIN ELEMENT #}
+    {# MAIN ELEMENT #}
 
-<main>
-    {# HOME #}
-    <section class="home">
-        <div class="home_container grid">
-            
-            <div class="home_img"></div>
-            <div class="home_title">NEW <br><span>ARRIVALS</span></div>
-           {#  <a href="#" class="button">GO SHOPPING</a> #}
-        </div>
-    </section>
+    <main>
+        {# HOME #}
+        <section class="home">
+            <div class="home_container grid">
+                <div class="home_img"></div>
+                <div class="home_data">
+                    <div class="home_title">NEW<br><span>ARRIVALS</span></div>
+                    <a href="#products" class="button">GO SHOPPING</a>
+                </div>
+            </div>
+        </section>
+        
+        {# MOST VIEWED PRODUCTS #}
 
-</main>
+        <section class="popular_products">
+            <div class="products_container grid">
+                <h1>POPULAR PRODUCTS</h1>
+                <div class="products_box">
+                    <img src="" alt="">
+                </div>
+            </div>
+
+        </section>
+
+
+    </main>
 
 {% endblock content %}

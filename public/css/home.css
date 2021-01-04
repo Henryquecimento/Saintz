@@ -42,10 +42,24 @@
 .home_img {
     width: 100vw;
     background: url('../img/model1-large.jpg') no-repeat center center;
-    filter: blur(1px);
     background-size: 180vw;
-    filter:saturate(0);
+    filter: saturate(0);
+}
 
+
+/* BUTTONS */
+.button {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: var(--mb-1);
+    border-radius: 0.5rem;
+    color: var(--base-color);
+    background: var(--red-color);
+}
+
+.button:hover {
+    background: var(--red-color-alt);
+    transition: background 120ms;
 }
 
 @media screen and (min-width: 480px){
@@ -55,12 +69,14 @@
     }
 }
 
-
+.home_data {
+    position: absolute;
+}
 .home_title {
-    position: fixed;
-    padding-top: 4rem;
+    padding-top: 8rem;
+    margin: var(--mb-1);
     font-size: var(--big-font-size);
     line-height: 4rem;
     font-weight: var(--font-bold);
-    color: var(--blue-color);
+    color: var(--base-color);
 }
