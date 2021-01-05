@@ -14,24 +14,81 @@
             <div class="home_container grid">
                 <div class="home_img"></div>
                 <div class="home_data">
-                    <div class="home_title">NEW<br><span>ARRIVALS</span></div>
+                    <div class="home_title">NEW<br>
+                        <span>ARRIVALS</span></div>
                     <a href="#products" class="button">GO SHOPPING</a>
                 </div>
             </div>
         </section>
-        
+
         {# MOST VIEWED PRODUCTS #}
 
-        <section class="popular_products">
-            <div class="products_container grid">
-                <h1>POPULAR PRODUCTS</h1>
-                <div class="products_box">
-                    <img src="" alt="">
+        <section class="featured section" id='featured'>
+            <h2 class='section-title'>POPULAR PRODUCTS</h1>
+            <a href="#products" class="section-subtitle">View All</a>
+
+            {# {%for product of products %} -- You need to create a variable#}
+            <div class="featured_container grid">
+                <div class="featured_product">
+                    <div class="products_box">
+                        <div class="featured_new">NEW</div>
+                        <img src="/img/bag1.jpg" alt="Bagpack" class='product_img'>
+                    </div>
+
+                    <div class="featured_data">
+                        <h3 class="featured_name">Prod1</h3>
+                        <span class="featured_price">$85.00</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        {# NEW ARRIVALS #}
+        <section class="new section" id='new'>
+            <h2 class="section-title">NEW ARRIVALS</h2>
+            <a href="#products" class="section-subtitle">View All</a>
+
+            <div class="new_container grid">
+                {# {%for new of news %} -- You need to create a variable#}
+                <div class="new_box">
+                    <img src="/img/bag5.jpg" alt="">
+
+                    <div class="new_link">
+                        <a href="#" class="button">VIEW PRODUCT</a>
+                    </div>
                 </div>
             </div>
 
         </section>
 
+        {# SEASONS #}
+
+        <section class="season section" id='season'>
+            <h2 class="section-title">SEASONS</h2>
+            <a href="#products" class="section-subtitle">View All</a>
+
+            <div class="seasons_container grid">
+
+                {# {%for season of seasons %} -- You need to create a variable#}
+                <div class="season_box">
+                    <img src="/img/bag5.jpg" alt="">
+                    
+                    <div class="season_data">
+                        <h3 class="season_name">Summer</h3>
+                    </div>
+
+                    <div class="season_link">
+                        <a href="#" class="button">VIEW SEASON</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        {# NEWSLETTER #}
+        
 
     </main>
 

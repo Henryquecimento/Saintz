@@ -1,4 +1,5 @@
 const express = require('express');
+const productData = require('./productData');
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
@@ -6,11 +7,11 @@ routes.get('/', (req, res) => {
 })
 
 routes.get('/main', (req, res) => {
-    return res.render('main/main')
+    return res.render('main/main', {products: productData});
 })
 
 routes.get('/cart', (req, res) => {
-    return res.render('cart/cart')
+    return res.render('cart/cart');
 })
 
 module.exports = routes;
