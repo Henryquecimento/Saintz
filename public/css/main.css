@@ -160,3 +160,16 @@ header {
     color: var(--red-color);
 }
 
+/* SECTION */
+.section {
+    text-align: center;
+    line-height: var(--mb-4);
+}
+
+.section-title {
+    padding-top: 3rem;
+}
+
+.section-subtitle {
+    margin-top: 1.5rem;
+}

@@ -1,0 +1,30 @@
+/* SUBSCRIBE */
+h2 {
+    padding-top: 4rem;
+}
+
+/* CARDS */
+.card {
+    background-color:  #e6e0e0;
+    max-width: calc(80vw - 3rem);
+    min-height: 460px;
+    margin: 45px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0px 2px 6px 5px rgba(0, 0, 0, 0.18);
+    animation: up 300ms ease;
+}
+
+.avatar {
+    width: auto;
+}
+
+@media screen and (max-width: 425px) {
+    .card {
+        display: grid;
+    } 
+    .avatar {
+        background: none;
+        display: none;
+    }
+ }

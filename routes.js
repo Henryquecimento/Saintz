@@ -14,4 +14,8 @@ routes.get('/cart', (req, res) => {
     return res.render('cart/cart');
 })
 
+routes.get('/subscription', (req, res) => {
+    return res.render('subscription/subscribe');
+})
+
 module.exports = routes;

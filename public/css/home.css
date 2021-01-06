@@ -80,3 +80,13 @@
     font-weight: var(--font-bold);
     color: var(--base-color);
 }
+
+
+/* FEATURED */
+.featured {
+    text-align: center;
+}
+
+.product_img {
+    width: 80%;
+}
