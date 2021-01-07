@@ -1,11 +1,43 @@
+:root{
+    /* Weight */
+    --font-semi: 600;
+    --font-bold: 700;
+
+    /* Colors */
+    --base-color: #ffffff;
+    --red-color: #EC336B;
+    --red-color-alt: #bf1447;
+    --dark-color: #1a1919;
+    --dark-color-light: #636363;
+    --gray-color: #aaa4a4;
+    --gray-color-light: #e6e0e0;
+    --purple-color: #7D67EC;
+    --blue-color: #32289B;
+
+    /* Fonts */
+    --small-font-size: 0.5rem; /* 8px */
+    --standard-font-size: 1rem; /* 16px */
+    --h2-font-size: 1.5rem; /* 24px */
+    --h1-font-size: 2rem; /* 32px */
+    --big-font-size: 3rem; /* 48px */
+
+    /* Margins */
+    --mb-1: 0.5rem;
+    --mb-2: 1rem;
+    --mb-3: 1.5rem;
+    --mb-4: 2rem;
+}
+
 /* SUBSCRIBE */
 h2 {
     padding-top: 4rem;
+    text-align: center;
+    
 }
 
 /* CARDS */
 .card {
-    background-color:  #e6e0e0;
+    background-color:  #e6e0e0; /* CHAAAAAAAANGE THIS LATER */
     max-width: calc(80vw - 3rem);
     min-height: 460px;
     margin: 45px auto;
@@ -15,16 +47,47 @@ h2 {
     animation: up 300ms ease;
 }
 
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .avatar {
     width: auto;
 }
 
+/* MOBILE VERSION - SETUP */
+
 @media screen and (max-width: 425px) {
     .card {
-        display: grid;
+        grid-template-columns: none; 
+        max-width: calc(100vw - 1rem);
+        min-height: 420px;
+        margin: 24px auto;
     } 
     .avatar {
         background: none;
         display: none;
     }
  }
+
+ /* SUBSCRIPTION SECTIONS*/
+.sign_up {
+    margin: 1rem 0rem 0rem 2rem; 
+}
+
+h3 {
+    color: var(--purple-color);
+    margin-bottom: var(--mb-3);
+}
+
+.sign_up .item {
+    font-size: var(--standard-font-size);
+    line-height: 2rem;
+    font-weight: var(--font-bold);
+}

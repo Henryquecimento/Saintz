@@ -6,11 +6,65 @@
 
 {% block content %}
 {# SUBSCRIBE PAGE #}
-    <h2>Everything is ok!</h2>
+    <h2>SUBSCRIPTION</h2>
     <div class="card">
-        <section class="avatar" style="background: url(https://source.unsplash.com/collection/3860213/800x600) no-repeat center center" >
+        <section class="avatar"
+         style="background: url(https://source.unsplash.com/collection/3860213/800x600) no-repeat center center" >
+         </section>
 
-        </section>
+         <section class="sign_up">
+            
+            <h3>Sign Up</h3>
+
+            <div class="item">
+                <div>Name</div>
+                <div>
+                    <input 
+                    type="text"
+                    name='name'
+                    placeholder="What's your name?"
+                    value=''
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Age</div>
+                <div>
+                    <input 
+                    type="date"
+                    name='birth'
+                    placeholder="How old are you?"
+                    value=''
+                    >
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Gender</div>
+                
+                <span>
+                    <div>
+                        <input 
+                        type="radio"
+                        name='gender'
+                        >Male
+                       {#  value="M" {% if #variable == 'M' %} #}
+                    </div>
+                </span>
+                <span>
+                    <div>
+                        <input 
+                        type="radio"
+                        name='gender'
+                        >Female
+{#                         value="M" {% if #variable == 'M' %}
+ #}                    </div>
+                </span>
+            </div>
+
+         </section>
+
     </div>
 
 {% endblock content %}
