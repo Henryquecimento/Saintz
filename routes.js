@@ -1,6 +1,6 @@
 const express = require('express');
 const productData = require('./productData');
-const clientData = require('./clientData')
+const client = require('./subscription')
 
 const routes = express.Router();
 
@@ -17,7 +17,9 @@ routes.get('/cart', (req, res) => {
 })
 
 routes.get('/subscription', (req, res) => {
-    return res.render('subscription/subscribe', {client: clientData});
+    return res.render('subscription/subscribe');
 })
+
+routes.post('/subscription')/* add the function */
 
 module.exports = routes;

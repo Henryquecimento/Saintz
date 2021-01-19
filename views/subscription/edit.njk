@@ -7,8 +7,7 @@
 {% block content %}
     {# SUBSCRIBE PAGE #}
     <h2>SUBSCRIPTION</h2>
-    <form class="card" method='POST' action='/subscription'>
-        
+    <div class="card">
         <section class="avatar" style="background: url(https://source.unsplash.com/collection/3860213/800x600) no-repeat center center"></section>
 
         <section class="sign_up">
@@ -33,8 +32,15 @@
                 <div>Gender</div>
 
                 <div>
-                    <span><input type="radio" name='gender' checked>Male</span>
-                    <span><input type="radio" name='gender'>Female</span>
+                    <span>
+                        <input type="radio" name='gender'>Male
+                         {# value="M" {% if {{client.gender}} == 'M' %} #}
+                    </span>
+                
+                    <span>
+                        <input type="radio" name='gender'>Female
+                        {#  value="F" {% if {{cliente.gender}} == 'F' %} #}
+                    </span>
                 </div>
             </div>
 
@@ -42,6 +48,6 @@
 
         </section>
 
-    </form>
+    </div>
 
 {% endblock content %}
