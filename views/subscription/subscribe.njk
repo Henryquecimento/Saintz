@@ -5,65 +5,48 @@
 {% endblock head %}
 
 {% block content %}
-{# SUBSCRIBE PAGE #}
+    {# SUBSCRIBE PAGE #}
     <h2>SUBSCRIPTION</h2>
     <div class="card">
-        <section class="avatar"
-         style="background: url(https://source.unsplash.com/collection/3860213/800x600) no-repeat center center" >
-         </section>
+        <section class="avatar" style="background: url(https://source.unsplash.com/collection/3860213/800x600) no-repeat center center"></section>
 
-         <section class="sign_up">
-            
+        <section class="sign_up">
+
             <h3>Sign Up</h3>
 
             <div class="item">
                 <div>Name</div>
                 <div>
-                    <input 
-                    type="text"
-                    name='name'
-                    placeholder="What's your name?"
-                    value=''
-                    >
+                    <input type="text" name='name' placeholder="What's your name?" value='{{client.name}}'>
                 </div>
             </div>
 
             <div class="item">
                 <div>Age</div>
                 <div>
-                    <input 
-                    type="date"
-                    name='birth'
-                    placeholder="How old are you?"
-                    value=''
-                    >
+                    <input type="date" name='birth' placeholder="How old are you?" value='{{client.age}}'>
                 </div>
             </div>
 
             <div class="item">
                 <div>Gender</div>
+
+                <div>
+                    <span>
+                        <input type="radio" name='gender'>Male
+                         {# value="M" {% if {{client.gender}} == 'M' %} #}
+                    </span>
                 
-                <span>
-                    <div>
-                        <input 
-                        type="radio"
-                        name='gender'
-                        >Male
-                       {#  value="M" {% if #variable == 'M' %} #}
-                    </div>
-                </span>
-                <span>
-                    <div>
-                        <input 
-                        type="radio"
-                        name='gender'
-                        >Female
-{#                         value="M" {% if #variable == 'M' %}
- #}                    </div>
-                </span>
+                    <span>
+                        <input type="radio" name='gender'>Female
+                        {#  value="F" {% if {{cliente.gender}} == 'F' %} #}
+                    </span>
+                </div>
             </div>
 
-         </section>
+            <button type="submit">SAVE</button>
+
+        </section>
 
     </div>
 
