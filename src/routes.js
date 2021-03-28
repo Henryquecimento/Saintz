@@ -1,6 +1,6 @@
 const express = require('express');
 const productData = require('./productData');
-const client = require('./subscription')
+const client = require('./app/controller/clients/clients');
 
 const routes = express.Router();
 
@@ -9,17 +9,16 @@ routes.get('/', (req, res) => {
 })
 
 routes.get('/main', (req, res) => {
-    return res.render('main/main', {products: productData});
+    return res.render('main/main', { products: productData });
 })
 
 routes.get('/cart', (req, res) => {
     return res.render('cart/cart');
 })
 
-routes.get('/subscription', (req, res) => {
-    return res.render('subscription/subscribe');
-})
+/* CLIENTs */
 
-routes.post('/subscription')/* add the function */
+routes.get('/subscription', client.index);
+routes.post('/subscription', client.create);
 
 module.exports = routes;
