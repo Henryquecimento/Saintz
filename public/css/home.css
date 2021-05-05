@@ -39,7 +39,7 @@
 
 .home_img {
   width: 100vw;
-  background: url("../img/model1-large.jpg") no-repeat center center;
+  /* background: url("../img/model1-large.jpg") no-repeat center center; */
   background-size: 180vw;
   filter: saturate(0);
 }
