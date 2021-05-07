@@ -1,24 +1,24 @@
-const express = require('express');
-const productData = require('./productData');
-const client = require('./app/controller/clients/clients');
+const express = require("express");
+const productData = require("./productData");
+const signUp = require("./app/controller/SignUpController");
+const Products = require("./app/controller/ProductsController");
 
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    return res.redirect("/main");
-})
+/* Public Access */
+routes.get("/", (req, res) => {
+  return res.render("publicAccess/index", { products: productData });
+});
+routes.get("/cart", (req, res) => {
+  return res.render("publicAccess/cart/index");
+});
 
-routes.get('/main', (req, res) => {
-    return res.render('main/main', { products: productData });
-})
+/* Subscription */
+routes.get("/signUp", signUp.index);
+routes.post("/signUp", signUp.create);
 
-routes.get('/cart', (req, res) => {
-    return res.render('cart/cart');
-})
+/* Private Access */
 
-/* CLIENTs */
-
-routes.get('/subscription', client.index);
-routes.post('/subscription', client.create);
+routes.get("/admin", Products.index);
 
 module.exports = routes;
