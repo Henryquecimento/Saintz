@@ -6,22 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Saintz - Management</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/admin/layout.css">
     </head>
     <body>
 
         <header>
-            <nav class="nav container">
-
-                <div class="nav logo">
+            <div class="container">
+                <div class="nav_logo">
                     <a href="/admin" class="nav_logo">SAINTZ</a>
                 </div>
 
-                <div class="nav links">
-                    <a href="/admin">Products</a>
-                </div>
+                <nav>
+                    <div class="nav_links">
+                        <a href="/admin">Products</a>
+                    </div>
 
-            </nav>
+                </nav>
+            </div>
         </header>
 
         {% block contents %}{% endblock contents %}
