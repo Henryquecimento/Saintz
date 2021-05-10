@@ -2,6 +2,6 @@ const db = require("./../../config/db");
 
 module.exports = {
   index(req, res) {
-    return res.render("admin/layout");
+    return res.render("admin/products/index.njk");
   },
 };

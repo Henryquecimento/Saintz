@@ -1,0 +1,13 @@
+{% extends "admin/layout.njk" %}
+
+<section class="container form">
+    <form method="POST" action="/admin/products">
+        <div class="header">Add Product</div>
+
+        <div class="fields">
+            {% include "products/fields.njk" %}
+        </div>
+
+    </form>
+
+</section>

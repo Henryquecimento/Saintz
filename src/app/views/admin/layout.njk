@@ -1,29 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Saintz - Management</title>
-        <link rel="stylesheet" href="css/admin/layout.css">
+        <link rel="stylesheet" href="/css/admin/layout.css">
+
     </head>
     <body>
 
-        <header>
-            <div class="container">
-                <div class="nav_logo">
-                    <a href="/admin" class="nav_logo">SAINTZ</a>
-                </div>
-
-                <nav>
-                    <div class="nav_links">
-                        <a href="/admin">Products</a>
-                    </div>
-
-                </nav>
-            </div>
-        </header>
+        {% include "admin/parts/header.njk"%}
 
         {% block contents %}{% endblock contents %}
 
