@@ -1,7 +1,7 @@
 const db = require("./../../config/db");
 
 module.exports = {
-  index(req, res) {
-    return res.render("admin/products/index.njk");
+  create(req, res) {
+    return res.render("admin/products/create.njk");
   },
 };

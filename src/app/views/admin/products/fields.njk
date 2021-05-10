@@ -1,0 +1,94 @@
+<div class="item">
+    <div>Category</div>
+    <div>
+        <select name="category_id">]
+            {% for category in categories %}
+                <option value="{{ category_id }}"
+                    
+                    {% if category_id == category.id %} select 
+                    {% endif %}
+                >{{category.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Name</div>
+    <div>
+        <input 
+            type="text" 
+            name="name"
+            placeholder="Product Name"
+            value={{ product.name }}
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Description</div>
+    <div>
+        <textarea 
+            name="description"
+            cols="30" 
+            rows="10" 
+            value={{ product.description }}>
+        </textarea>
+        <input 
+            type="text" 
+            name="description"
+            value={{ product.description }}
+        >
+    </div>
+</div>
+
+{# i NEED TO ADD PRICE MASK #}
+<div class="item">
+    <div>Price</div>
+    <div>
+        <input 
+            type="number" 
+            name="price"
+            value={{ product.price }}
+        > 
+    </div>
+    {% if product.old_price %}
+        <input type="hidden" name="old_price" value={{product.old_price}}>
+    {% endif %}
+</div>
+{# IF OLD PRICE... #}
+
+<div class="item">
+    <div>Quantity</div>
+    <div>
+        <input 
+            type="number" 
+            name="quantity"
+            value={{ product.quantity }}
+        >
+    </div>
+</div>
+
+{% if (product.status == "1") or (product.status == 0 )%}
+<div class="item">
+    <div>Available ?</div>
+    <div>
+        <span>
+            <input 
+                type="radio" 
+                name="status"
+                value='1'
+                {% if product.status == '1' %} checked="checked" {% endif %}
+            > YES
+        </span>
+        <span>
+            <input 
+                type="radio" 
+                name="status"
+                value='0'
+                {% if product.status == '0' %} checked="checked" {% endif %}
+            > NO
+        </span>
+    </div>
+</div>
+{% endif %}

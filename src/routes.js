@@ -19,6 +19,6 @@ routes.post("/signUp", signUp.create);
 
 /* Private Access */
 
-routes.get("/admin/products", Products.index);
+routes.get("/admin/products", Products.create);
 
 module.exports = routes;
