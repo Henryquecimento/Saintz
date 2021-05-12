@@ -1,13 +1,9 @@
 <div class="item">
     <div>Category</div>
     <div>
-        <select name="category_id">]
+        <select name="category_id">
             {% for category in categories %}
-                <option value="{{ category_id }}"
-                    
-                    {% if category_id == category.id %} select 
-                    {% endif %}
-                >{{category.name}}</option>
+                <option value="{{ category.id }}" {% if product.category_id == category.id %} selected {% endif %}>{{category.name}}</option>
             {% endfor %}
         </select>
     </div>
@@ -20,8 +16,7 @@
             type="text" 
             name="name"
             placeholder="Product Name"
-            value={{ product.name }}
-        >
+            value='{{ product.name }}'>
     </div>
 </div>
 
@@ -29,11 +24,7 @@
     <div>Description</div>
     <div>
         <textarea 
-            name="description"
-            cols="30" 
-            rows="10" 
-            value={{ product.description }}>
-        </textarea>
+            name="description">{{ product.description }}</textarea>
     </div>
 </div>
 
@@ -42,13 +33,15 @@
     <div>Price</div>
     <div>
         <input 
-            type="number" 
+            type="text" 
             name="price"
-            value={{ product.price }}
+            placeholder='Product Price'
+            value='{{ product.price }}'
+            onkeydown='Mask.apply(this, "formatBRL")' 
         > 
     </div>
     {% if product.old_price %}
-        <input type="hidden" name="old_price" value={{product.old_price}}>
+        <input type="hidden" name="old_price" value='{{product.old_price}}'>
     {% endif %}
 </div>
 {# IF OLD PRICE... #}
@@ -59,8 +52,8 @@
         <input 
             type="number" 
             name="quantity"
-            value={{ product.quantity }}
-        >
+            placeholder="Available Stock"
+            value='{{ product.quantity }}'>
     </div>
 </div>
 

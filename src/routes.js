@@ -20,5 +20,8 @@ routes.post("/signUp", signUp.create);
 /* Private Access */
 
 routes.get("/admin/products/create", Products.create);
+routes.get("/admin/products/:id/edit", Products.edit);
+
+routes.post("/admin/products", Products.post);
 
 module.exports = routes;
