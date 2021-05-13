@@ -23,5 +23,6 @@ routes.get("/admin/products/create", Products.create);
 routes.get("/admin/products/:id/edit", Products.edit);
 
 routes.post("/admin/products", Products.post);
+routes.put("/admin/products", Products.put);
 
 module.exports = routes;

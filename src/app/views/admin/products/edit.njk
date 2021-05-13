@@ -7,13 +7,14 @@
 {% block contents %}
 
     <section class="container form">
-        <form method="POST" action="/admin/products?method=PUT">
+        <form method="POST" action="/admin/products?_method=PUT">
             <div class="header">Edit Product</div>
 
             <div class="fields">
                 {% include "admin/products/fields.njk" %}
+                <input type="hidden" name="id" value='{{ product.id }}'>
             </div>
-            <button class="button" type="submit">Update</button>
+            <button class="button edit" type="submit">Update</button>
         </form>
 
     </section>
