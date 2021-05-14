@@ -62,4 +62,9 @@ module.exports = {
 
     return res.redirect(`/admin/products/${req.body.id}/edit`);
   },
+  async delete(req, res) {
+    await Product.delete(req.body.id);
+
+    return res.redirect(`/admin/products/create`);
+  },
 };
