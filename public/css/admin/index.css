@@ -1,0 +1,30 @@
+section.container {
+  padding: 16px;
+  margin: 50px auto;
+}
+
+section.container div.header {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+}
+
+section.container div.header:first-child {
+  margin: 16px 0;
+  font-size: 24px;
+  color: #7823ce;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+section.container div.header div.create {
+  font-size: 16px;
+  line-height: 18px;
+  align-self: center;
+}
+section.container div.header div.create a {
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  background-color: #7823ce;
+}

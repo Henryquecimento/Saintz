@@ -3,6 +3,14 @@ const Category = require("../models/Category");
 const { formatPrice } = require("../../lib/utils");
 
 module.exports = {
+  async index(req, res) {
+    const results = await Product.all();
+    const products = results.rows;
+
+    products[0].price = formatPrice(products[0].price);
+
+    return res.render("admin/products/index.njk", { products });
+  },
   async create(req, res) {
     try {
       const results = await Category.all();
