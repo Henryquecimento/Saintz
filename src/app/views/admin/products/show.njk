@@ -1,0 +1,39 @@
+{% extends 'admin/layout.njk' %}
+
+{% block header %}
+    <link rel="stylesheet" href="/css/admin/index.css">
+{% endblock header %}
+
+{% block contents %}
+    <section class="container">
+        <div class="header">
+            <div>Product Name:
+                {{ product.name }}</div>
+            <div class='edit'>
+                <a href="/admin/products/{{product.id}}/edit">Edit Product</a>
+            </div>
+        </div>
+
+        <div class="product box">
+
+            <div><img src="/img/bag3.jpg" alt="">
+                {# {{product.image} #}
+            </div>
+            <div class="product_text">
+                <div>{{product.name}}</div>
+                <div>{{product.price}}</div>
+            </div>
+
+            {# Create an idea to chage to Category Name #}
+            <div>Category: {{product.category_id}}</div>
+            <div>Description: {{product.description}}</div>
+            <div>Quantity: {{product.quantity}}</div>
+
+            {# Create a functionality to replace the '0' and '1'
+            to 'Not Available' and 'Available', respectively #}
+            <div>Status: {{product.status}}</div>
+        </div>
+
+    </section>
+
+{% endblock contents %}

@@ -21,6 +21,7 @@ routes.post("/signUp", signUp.create);
 
 routes.get("/admin/products", Products.index);
 routes.get("/admin/products/create", Products.create);
+routes.get("/admin/products/:id", Products.show);
 routes.get("/admin/products/:id/edit", Products.edit);
 
 routes.post("/admin/products", Products.post);

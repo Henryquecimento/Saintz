@@ -35,6 +35,14 @@ module.exports = {
 
     return res.redirect(`/admin/products/${productId}`);
   },
+  async show(req, res) {
+    let results = await Product.find(req.params.id);
+    const product = results.rows[0];
+
+    product.price = formatPrice(product.price);
+
+    return res.render("admin/products/show", { product });
+  },
   async edit(req, res) {
     let results = await Product.find(req.params.id);
     const product = results.rows[0];

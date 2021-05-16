@@ -17,6 +17,9 @@
             {% for product in products %}
                 <div>{{product.name}}</div>
                 <div>{{product.price}}</div>
+                <div>
+                    <a href="/admin/products/{{product.id}}">Visualize</a>
+                </div>
             {% endfor %}
         </div>
 
