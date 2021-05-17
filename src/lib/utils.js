@@ -23,4 +23,11 @@ module.exports = {
       currency: "BRL",
     }).format(Number(price / 100)));
   },
+  formatStatus(status) {
+    if (status == "1") {
+      return (status = String("Available"));
+    } else {
+      return (status = String("Unvailable"));
+    }
+  },
 };

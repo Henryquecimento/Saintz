@@ -1,13 +1,15 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
-const { formatPrice } = require("../../lib/utils");
+const { formatPrice, formatStatus } = require("../../lib/utils");
 
 module.exports = {
   async index(req, res) {
     const results = await Product.all();
     const products = results.rows;
 
-    products[0].price = formatPrice(products[0].price);
+    for (product of products) {
+      product.price = formatPrice(product.price);
+    }
 
     return res.render("admin/products/index.njk", { products });
   },
@@ -40,6 +42,7 @@ module.exports = {
     const product = results.rows[0];
 
     product.price = formatPrice(product.price);
+    product.status = formatStatus(product.status);
 
     return res.render("admin/products/show", { product });
   },
@@ -76,7 +79,7 @@ module.exports = {
 
     await Product.update(req.body);
 
-    return res.redirect(`/admin/products/${req.body.id}/edit`);
+    return res.redirect(`/admin/products/${req.body.id}`);
   },
   async delete(req, res) {
     await Product.delete(req.body.id);
