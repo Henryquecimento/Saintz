@@ -24,13 +24,10 @@
                 <div>{{product.price}}</div>
             </div>
 
-            {# Create an idea to chage to Category Name #}
-            <div>Category: {{product.category_id}}</div>
+            <div>Category: {{ product.category_name }}</div>
             <div>Description: {{product.description}}</div>
             <div>Quantity: {{product.quantity}}</div>
 
-            {# Create a functionality to replace the '0' and '1'
-            to 'Not Available' and 'Available', respectively #}
             <div>Status: {{product.status}}</div>
         </div>
 
