@@ -33,6 +33,7 @@ navLink.forEach((n) => {
   n.addEventListener("click", linkAction);
 });
 
+/* MASK PRICE VALUES */
 const Mask = {
   apply(input, func) {
     setTimeout(function () {

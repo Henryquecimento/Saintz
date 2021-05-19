@@ -1,6 +1,6 @@
 const express = require("express");
 const productData = require("./productData");
-const signUp = require("./app/controller/SignUpController");
+const Categories = require("./app/controller/CategoriesController");
 const Products = require("./app/controller/ProductsController");
 
 const routes = express.Router();
@@ -13,11 +13,12 @@ routes.get("/cart", (req, res) => {
   return res.render("publicAccess/cart/index");
 });
 
-/* Subscription */
-routes.get("/signUp", signUp.index);
-routes.post("/signUp", signUp.create);
 
 /* Private Access */
+
+routes.get('/admin/categories', Categories.index);
+
+
 
 routes.get("/admin/products", Products.index);
 routes.get("/admin/products/create", Products.create);
