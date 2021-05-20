@@ -78,11 +78,11 @@ module.exports = {
   },
   productsPerCategories(id) {
     /* Products name per Categories */
-    const query = `
+    /* const query = `
     SELECT name 
     FROM products 
     LEFT JOIN cate
     WHERE products.category_id = categories.id
-    `
+    ` */
   }
 };

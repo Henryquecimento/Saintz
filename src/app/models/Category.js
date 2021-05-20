@@ -10,9 +10,12 @@ module.exports = {
   },
   find(id) {
     const query = `
-      SELECT *,
+      SELECT categories.*,
+      Array(SELECT name FROM products WHERE products.category_id = categories.id) AS total_products
       FROM categories
-      WHERE id = $1
+      LEFT JOIN products ON (categories.id = products.category_id)
+      WHERE categories.id = $1
+      GROUP BY categories.id
     `
 
     return db.query(query, [id]);
