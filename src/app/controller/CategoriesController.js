@@ -5,9 +5,13 @@ module.exports = {
         const results = await Category.all();
         const categories = results.rows;
 
-        console.log(categories)
-
         return res.render('admin/categories/index.njk', { categories });
-    }
+    },
+    async show(req, res) {
+        const results = await Category.find(req.params.id);
+        const category = results.rows[0];
 
+        console.log(category);
+        return res.send("Tá Ok!");
+    }
 }

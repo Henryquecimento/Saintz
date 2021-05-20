@@ -17,6 +17,7 @@ routes.get("/cart", (req, res) => {
 /* Private Access */
 
 routes.get('/admin/categories', Categories.index);
+routes.get('/admin/categories/:id', Categories.show);
 
 
 
