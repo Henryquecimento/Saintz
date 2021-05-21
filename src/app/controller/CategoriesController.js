@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+const Product = require('../models/Product');
 
 module.exports = {
     async index(req, res) {
@@ -11,7 +12,6 @@ module.exports = {
         const results = await Category.find(req.params.id);
         const category = results.rows[0];
 
-        console.log(category);
-        return res.send("Tá Ok!");
+        return res.render(`admin/categories/show`, { category });
     }
 }

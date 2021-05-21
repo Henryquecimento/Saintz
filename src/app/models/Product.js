@@ -75,14 +75,5 @@ module.exports = {
   },
   delete(id) {
     return db.query(`DELETE FROM products WHERE id = $1`, [id]);
-  },
-  productsPerCategories(id) {
-    /* Products name per Categories */
-    /* const query = `
-    SELECT name 
-    FROM products 
-    LEFT JOIN cate
-    WHERE products.category_id = categories.id
-    ` */
   }
 };
