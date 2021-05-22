@@ -1,0 +1,28 @@
+{% extends "admin/layout.njk" %}
+
+{% block header %}
+    <link rel="stylesheet" href="/css/admin/create.css">
+{% endblock header %}
+
+{% block contents %}
+
+    <section class="container form">
+        <form method="POST" action="/admin/categories?_method=PUT">
+            <div class="header">Edit categorie</div>
+
+            <div class="fields">
+                {% include "admin/categories/fields.njk" %}
+                <input type="hidden" name="id" value='{{ category.id }}'>
+            </div>
+            <button class="button edit" type="submit">Update</button>
+        </form>
+
+        <form id="form-delete" method="POST" action="/admin/categoires?_method=DELETE">
+            <input type="hidden" name="id" value='{{ category.id }}'>
+            <button class="button delete" type="submit">Delete</button>
+        </form>
+
+    </section>
+    {% include "admin/confirm.njk" %}
+
+{% endblock contents %}

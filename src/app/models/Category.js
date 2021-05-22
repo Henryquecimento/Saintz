@@ -8,6 +8,15 @@ module.exports = {
       ORDER BY id
     `);
   },
+  create(data) {
+    const query = `
+      INSERT INTO categories (
+        name
+      ) VALUES ($1)
+      RETURNING id`;
+
+    return db.query(query, [data.name]);
+  },
   find(id) {
     const query = `
       SELECT categories.*,

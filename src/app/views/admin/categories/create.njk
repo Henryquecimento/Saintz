@@ -1,0 +1,21 @@
+{% extends "admin/layout.njk" %}
+
+{% block header %}
+    <link rel="stylesheet" href="/css/admin/create.css">
+{% endblock header %}
+
+{% block contents %}
+
+    <section class="container form">
+        <form method="POST" action="/admin/categories">
+            <div class="header">Add Categories</div>
+
+            <div class="fields">
+                {% include "admin/categories/fields.njk" %}
+            </div>
+            <button class="button" type="submit">Save</button>
+        </form>
+
+    </section>
+
+{% endblock contents %}
