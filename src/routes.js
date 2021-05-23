@@ -19,8 +19,10 @@ routes.get("/cart", (req, res) => {
 routes.get('/admin/categories', Categories.index);
 routes.get('/admin/categories/create', Categories.create);
 routes.get('/admin/categories/:id', Categories.show);
+routes.get('/admin/categories/:id/edit', Categories.edit);
 
 routes.post("/admin/categories", Categories.post);
+routes.put("/admin/categories", Categories.put);
 
 
 

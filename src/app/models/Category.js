@@ -28,5 +28,19 @@ module.exports = {
     `
 
     return db.query(query, [id]);
+  },
+  update(data) {
+    const query = `
+      UPDATE categories SET
+        name = ($1)
+      WHERE id = $2    
+    `;
+
+    const values = [
+      data.name,
+      data.id
+    ];
+
+    return db.query(query, values);
   }
 };
