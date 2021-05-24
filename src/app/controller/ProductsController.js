@@ -4,14 +4,18 @@ const { formatPrice, formatStatus } = require("../../lib/utils");
 
 module.exports = {
   async index(req, res) {
-    const results = await Product.all();
-    const products = results.rows;
+    try {
+      const results = await Product.all();
+      const products = results.rows;
 
-    for (product of products) {
-      product.price = formatPrice(product.price);
+      for (product of products) {
+        product.price = formatPrice(product.price);
+      }
+
+      return res.render("admin/products/index.njk", { products });
+    } catch (err) {
+      throw new Error(err);
     }
-
-    return res.render("admin/products/index.njk", { products });
   },
   async create(req, res) {
     try {
@@ -24,66 +28,88 @@ module.exports = {
     }
   },
   async post(req, res) {
-    const keys = Object.keys(req.body);
+    try {
+      const keys = Object.keys(req.body);
 
-    for (key of keys) {
-      if (req.body[key] == "") {
-        return res.send("`Please, you must fill all the fields up!");
+      for (key of keys) {
+        if (req.body[key] == "") {
+          return res.send("Please, you must fill all the fields up!");
+        }
       }
+
+      const results = await Product.create(req.body);
+      const productId = results.rows[0].id;
+
+      return res.redirect(`/admin/products/${productId}`);
+    } catch (err) {
+      throw new Error(err);
     }
 
-    const results = await Product.create(req.body);
-    const productId = results.rows[0].id;
-
-    return res.redirect(`/admin/products/${productId}`);
   },
   async show(req, res) {
-    let results = await Product.find(req.params.id);
-    const product = results.rows[0];
+    try {
+      let results = await Product.find(req.params.id);
+      const product = results.rows[0];
 
-    product.price = formatPrice(product.price);
-    product.status = formatStatus(product.status);
+      product.price = formatPrice(product.price);
+      product.status = formatStatus(product.status);
 
-    return res.render("admin/products/show", { product });
+      return res.render("admin/products/show", { product });
+    } catch (err) {
+      throw new Error(err);
+    }
   },
   async edit(req, res) {
-    let results = await Product.find(req.params.id);
-    const product = results.rows[0];
+    try {
+      let results = await Product.find(req.params.id);
+      const product = results.rows[0];
 
-    if (!product) return res.send("Product not found!");
+      if (!product) return res.send("Product not found!");
 
-    product.old_price = formatPrice(product.old_price);
-    product.price = formatPrice(product.price);
+      product.old_price = formatPrice(product.old_price);
+      product.price = formatPrice(product.price);
 
-    results = await Category.all();
-    const categories = results.rows;
+      results = await Category.all();
+      const categories = results.rows;
 
-    return res.render("admin/products/edit.njk", { product, categories });
+      return res.render("admin/products/edit.njk", { product, categories });
+    } catch (err) {
+      throw new Error(err);
+    }
   },
   async put(req, res) {
-    const keys = Object.keys(req.body);
+    try {
+      const keys = Object.keys(req.body);
 
-    for (key of keys) {
-      if (req.body[key] == "") {
-        return res.send("`Please, you must fill all the fields up!");
+      for (key of keys) {
+        if (req.body[key] == "") {
+          return res.send("Please, you must fill all the fields up!");
+        }
       }
+
+      req.body.price = req.body.price.replace(/\D/g, "");
+
+      if (req.body.old_price != req.body.price) {
+        const oldProduct = await Product.find(req.body.id);
+
+        req.body.old_price = oldProduct.rows[0].price;
+      }
+
+      await Product.update(req.body);
+
+      return res.redirect(`/admin/products/${req.body.id}`);
+    } catch (err) {
+      throw new Error(err);
     }
-
-    req.body.price = req.body.price.replace(/\D/g, "");
-
-    if (req.body.old_price != req.body.price) {
-      const oldProduct = await Product.find(req.body.id);
-
-      req.body.old_price = oldProduct.rows[0].price;
-    }
-
-    await Product.update(req.body);
-
-    return res.redirect(`/admin/products/${req.body.id}`);
   },
   async delete(req, res) {
-    await Product.delete(req.body.id);
 
-    return res.redirect(`/admin/products/create`);
+    try {
+      await Product.delete(req.body.id);
+
+      return res.redirect(`/admin/products/create`);
+    } catch (err) {
+      throw new Error(err);
+    }
   },
 };

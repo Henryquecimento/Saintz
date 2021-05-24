@@ -1,56 +1,76 @@
-const Category = require('../models/Category');
-const { update } = require('../models/Product');
-const Product = require('../models/Product');
-const { create, edit } = require('./ProductsController');
+const Category = require("../models/Category");
 
 module.exports = {
-    async index(req, res) {
-        const results = await Category.all();
-        const categories = results.rows;
+	async index(req, res) {
+		try {
+			const results = await Category.all();
+			const categories = results.rows;
 
-        return res.render('admin/categories/index.njk', { categories });
-    },
-    create(req, res) {
-        return res.render('admin/categories/create.njk');
-    },
-    async post(req, res) {
-        const keys = Object.keys(req.body);
+			return res.render("admin/categories/index.njk", { categories });
+		} catch (err) {
+			throw new Error(err);
+		}
 
-        for (key of keys) {
-            if (req.body[key] == "") {
-                return res.send("`Please, you must fill all the fields up!");
-            }
-        }
+	},
+	create(req, res) {
+		return res.render("admin/categories/create.njk");
+	},
+	async post(req, res) {
+		try {
+			const keys = Object.keys(req.body);
 
-        const results = await Category.create(req.body);
-        const categoryId = results.rows[0].id;
-        console.log(categoryId)
-        return res.redirect(`/admin/categories`);
-    },
-    async show(req, res) {
-        const results = await Category.find(req.params.id);
-        const category = results.rows[0];
+			for (key of keys) {
+				if (req.body[key] == "") {
+					return res.send("Please, you must fill all the fields up!");
+				}
+			}
 
-        return res.render(`admin/categories/show`, { category });
-    },
-    async edit(req, res) {
-        const results = await Category.find(req.params.id);
-        const category = results.rows[0];
 
-        return res.render("admin/categories/edit.njk", { category });
-    },
-    async put(req, res) {
-        const keys = Object.keys(req.body);
+			const results = await Category.create(req.body);
+			const categoryId = results.rows[0].id;
 
-        for (key of keys) {
-            if (req.body[key] == "") {
-                return res.send("`Please, you must fill all the fields up!");
-            }
-        }
+			return res.redirect(`/admin/categories/${categoryId}`);
+		} catch (err) {
+			throw new Error(err);
+		}
 
-        await Category.update(req.body);
 
-        return res.redirect(`/admin/categories/${req.body.id}`);
-    },
-    delete(req, res) { }
-}
+	},
+	async show(req, res) {
+		try {
+			const results = await Category.find(req.params.id);
+			const category = results.rows[0];
+
+			return res.render("admin/categories/show", { category });
+		} catch (err) {
+			throw new Error(err);
+		}
+	},
+	async edit(req, res) {
+		try {
+			const results = await Category.find(req.params.id);
+			const category = results.rows[0];
+
+			return res.render("admin/categories/edit.njk", { category });
+		} catch (err) {
+			throw new Error(err);
+		}
+	},
+	async put(req, res) {
+		try {
+			const keys = Object.keys(req.body);
+
+			for (key of keys) {
+				if (req.body[key] == "") {
+					return res.send("Please, you must fill all the fields up!");
+				}
+			}
+
+			await Category.update(req.body);
+
+			return res.redirect(`/admin/categories/${req.body.id}`);
+		} catch (err) {
+			throw new Error(err);
+		}
+	},
+};
