@@ -73,4 +73,9 @@ module.exports = {
 			throw new Error(err);
 		}
 	},
+	async delete(req, res) {
+		await Category.delete(req.body.id);
+
+		return res.redirect('/admin/categories');
+	}
 };

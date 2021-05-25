@@ -23,6 +23,7 @@ routes.get('/admin/categories/:id/edit', Categories.edit);
 
 routes.post("/admin/categories", Categories.post);
 routes.put("/admin/categories", Categories.put);
+routes.delete("/admin/categories", Categories.delete);
 
 
 
