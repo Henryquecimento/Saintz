@@ -22,7 +22,7 @@ form .item input[type="number"] {
   color: #777;
   margin: 12px 0;
   outline: none;
-  font-size: 12px;
+  font-size: 14px;
   padding: 2px 4px;
   line-height: 16px;
   font-weight: bold;
@@ -32,7 +32,8 @@ form .item input[type="number"] {
 }
 
 form .item textarea {
-  max-height: 150px;
+  height: 150px;
+  resize: none;
 }
 
 form .item > div {
@@ -40,6 +41,7 @@ form .item > div {
   font-size: 16px;
   line-height: 20px;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 form .item span {
@@ -79,20 +81,44 @@ form .item span {
 }
 
 /* GALLERY */
-form .item #photo-input {
-  background-color: #dddddd;
+form .item #photo-upload {
+  position: relative;
+
+  display: flex;
+  gap: 8px;
+}
+
+form .item #photo-input,
+form .item #photo-preview .photo img {
   width: 120px;
   height: 120px;
+
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-color: #ededed;
+
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 form .item #photo-input input[name="photo"] {
   width: 100%;
   height: 100%;
+
+  display: block;
+  overflow: hidden;
+
   opacity: 0;
+
   position: absolute;
   cursor: pointer;
+}
+
+form .item #photo-preview {
+  display: flex;
+  gap: 8px;
 }
