@@ -52,22 +52,21 @@ const Mask = {
 
 
 const PhotosUpload = {
+  limit: 4,
   preview: document.querySelector('#photo-preview'),
   handleFilesUpload(event) {
     const { files: fileList } = event.target;
 
+    PhotosUpload.hasLimit(event);
+
     Array.from(fileList).forEach(file => {
       const reader = new FileReader();
-
 
       reader.onload = () => {
         const image = new Image();
         image.src = String(reader.result);
 
-        const div = document.createElement('div');
-        div.classList.add('photo');
-
-        div.appendChild(image);
+        const div = PhotosUpload.createContainer(image);
 
         PhotosUpload.preview.appendChild(div);
 
@@ -75,6 +74,27 @@ const PhotosUpload = {
 
       reader.readAsDataURL(file);
     });
+  },
+  hasLimit(event) {
+    const { files: fileList } = event.target;
 
+    if (fileList.length >= PhotosUpload.limit) {
+      alert(`Only ${PhotosUpload.limit} files allowed!`);
+
+      event.preventDefaut();
+
+      return
+    }
+  },
+  createContainer(image) {
+    const div = document.createElement('div');
+    div.classList.add('photo');
+
+    div.onclick = () => alert('Remove photo');
+
+    div.appendChild(image);
+
+    return div;
   }
+
 }
