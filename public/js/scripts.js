@@ -57,7 +57,7 @@ const PhotosUpload = {
   handleFilesUpload(event) {
     const { files: fileList } = event.target;
 
-    PhotosUpload.hasLimit(event);
+    if (PhotosUpload.hasLimit(event)) return;
 
     Array.from(fileList).forEach(file => {
       const reader = new FileReader();
@@ -78,13 +78,15 @@ const PhotosUpload = {
   hasLimit(event) {
     const { files: fileList } = event.target;
 
-    if (fileList.length >= PhotosUpload.limit) {
+    if (fileList.length > PhotosUpload.limit) {
       alert(`Only ${PhotosUpload.limit} files allowed!`);
 
       event.preventDefaut();
 
-      return
+      return true;
     }
+
+    return false;
   },
   createContainer(image) {
     const div = document.createElement('div');
