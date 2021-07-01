@@ -49,3 +49,32 @@ const Mask = {
     }).format(Number(value / 100)));
   },
 };
+
+
+const PhotosUpload = {
+  preview: document.querySelector('#photo-preview'),
+  handleFilesUpload(event) {
+    const { files: fileList } = event.target;
+
+    Array.from(fileList).forEach(file => {
+      const reader = new FileReader();
+
+
+      reader.onload = () => {
+        const image = new Image();
+        image.src = String(reader.result);
+
+        const div = document.createElement('div');
+        div.classList.add('photo');
+
+        div.appendChild(image);
+
+        PhotosUpload.preview.appendChild(div);
+
+      }
+
+      reader.readAsDataURL(file);
+    });
+
+  }
+}
