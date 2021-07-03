@@ -92,11 +92,26 @@ const PhotosUpload = {
     const div = document.createElement('div');
     div.classList.add('photo');
 
-    div.onclick = () => alert('Remove photo');
+    div.onclick = PhotosUpload.removePhoto;
 
     div.appendChild(image);
 
+    div.appendChild(PhotosUpload.getRemoveButton());
+
     return div;
+  },
+  getRemoveButton() {
+    const closeButton = document.createElement('i');
+    closeButton.classList.add('material-icons');
+    closeButton.innerHTML = 'delete_forever';
+
+    return closeButton;
+  },
+  removePhoto(event) {
+    const photoDiv = event.target.parentNode;
+
+
+    photoDiv.remove();
   }
 
 }
