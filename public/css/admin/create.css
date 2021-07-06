@@ -122,3 +122,34 @@ form .item #photo-preview {
   display: flex;
   gap: 8px;
 }
+
+#photo-preview .photo {
+  position: relative;
+}
+
+#photo-preview .photo i {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 50px;
+
+  color: #ee3731;
+  background-color: rgba(225, 225, 225, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 200ms;
+
+  cursor: pointer;
+}
+
+#photo-preview .photo:hover i {
+  opacity: 1;
+}
