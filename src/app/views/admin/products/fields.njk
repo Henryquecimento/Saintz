@@ -1,16 +1,19 @@
 <div class="item">
     <div>Gallery</div>
-    <div id='photo-upload'>
-        <div id="photo-input">
-            <input 
-            type="file" 
-            name="photo"
-            multiple
-            accept='image/*'
-            onchange="PhotosUpload.handleFilesUpload(event)"
-            >
+    <div class="photo-container">
+        <div id='photo-upload'>
             <div>
-                <i class='material-icons'>add</i>
+                <input 
+                id="photo-input"
+                type="file" 
+                name="photo"
+                multiple
+                accept='image/*'
+                onchange="PhotosUpload.handleFilesUpload(event)"
+                >
+                <div class="add-photo">
+                    <i class='material-icons'>add</i>
+                </div>
             </div>
         </div>
         <div id="photo-preview"></div>
