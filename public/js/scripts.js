@@ -52,15 +52,20 @@ const Mask = {
 
 
 const PhotosUpload = {
+  input: "",
   limit: 4,
   preview: document.querySelector('#photo-preview'),
+  files: [],
   handleFilesUpload(event) {
     const { files: fileList } = event.target;
+    PhotosUpload.input = event.target
 
     if (PhotosUpload.hasLimit(event)) return;
 
     Array.from(fileList).forEach(file => {
       const reader = new FileReader();
+
+      PhotosUpload.files.push(file);
 
       reader.onload = () => {
         const image = new Image();
@@ -74,6 +79,9 @@ const PhotosUpload = {
 
       reader.readAsDataURL(file);
     });
+
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
+
   },
   hasLimit(event) {
     const { files: fileList } = event.target;
@@ -87,6 +95,13 @@ const PhotosUpload = {
     }
 
     return false;
+  },
+  getAllFiles() {
+    const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
+
+    PhotosUpload.files.forEach(file => dataTransfer.items.add(file));
+
+    return dataTransfer.files;
   },
   createContainer(image) {
     const div = document.createElement('div');
