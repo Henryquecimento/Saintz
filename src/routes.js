@@ -9,10 +9,6 @@ const routes = express.Router();
 routes.get("/", (req, res) => {
   return res.render("publicAccess/index", { products: productData });
 });
-routes.get("/cart", (req, res) => {
-  return res.render("publicAccess/cart/index");
-});
-
 
 /* Private Access */
 

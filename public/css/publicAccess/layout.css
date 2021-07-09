@@ -71,19 +71,10 @@ ul {
 
 a {
   text-decoration: none;
-  color: var(--dark-color);
+  color: white;
 }
 
 /* CSS */
-
-/* LAYOUT */
-/* .grid {
-  max-width: 1024px;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-column-gap: 2rem;
-  width: calc(100% - 1rem);
-} */
 
 header {
   width: 100%;
@@ -91,80 +82,6 @@ header {
   top: 0;
   left: 0;
   z-index: 100;
-  background-color: var(--purple-color);
+  background-color: var(--dark-color);
   box-shadow: 0rem 0 2rem 1rem rgba(26, 25, 25, 0.3);
-}
-
-/* NAVIGATION */
-.nav {
-  height: 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav_logo {
-  font-weight: var(--font-bold);
-  margin-left: 1rem;
-}
-
-/* ---MOBILE Version */
-
-@media screen and (max-width: 786px) {
-  .nav_menu {
-    position: fixed;
-    top: 3rem;
-    right: -100%;
-    width: 50%;
-    height: 100%;
-    padding: 2rem;
-    background-color: var(--base-color);
-    transition: 0.5s;
-  }
-}
-
-.nav_item {
-  margin-bottom: 3rem; /* u can use --mb4 */
-}
-
-.nav_link {
-  color: var(--dark-color);
-  font-weight: var(--font-bold);
-}
-
-.nav_link:hover {
-  color: var(--purple-color);
-}
-
-.nav_cart {
-  font-size: 1.5rem;
-  margin-right: var(--mb-2); /* 1rem - 16px */
-}
-
-.nav_toggle {
-  font-size: 1.5rem;
-}
-
-/* SHOW - MENU */
-.show {
-  right: 0;
-}
-
-/* add active */
-.active {
-  color: var(--red-color);
-}
-
-/* SECTION */
-.section {
-  text-align: center;
-  line-height: var(--mb-4);
-}
-
-.section-title {
-  padding-top: 3rem;
-}
-
-.section-subtitle {
-  margin-top: 1.5rem;
 }
