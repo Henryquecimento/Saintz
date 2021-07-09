@@ -1,5 +1,6 @@
 const express = require("express");
 const productData = require("./productData");
+const multer = require("./app/middlewares/multer");
 const Categories = require("./app/controller/CategoriesController");
 const Products = require("./app/controller/ProductsController");
 
@@ -28,8 +29,8 @@ routes.get("/admin/products/create", Products.create);
 routes.get("/admin/products/:id", Products.show);
 routes.get("/admin/products/:id/edit", Products.edit);
 
-routes.post("/admin/products", Products.post);
-routes.put("/admin/products", Products.put);
+routes.post("/admin/products", multer.array("photo", 4), Products.post);
+routes.put("/admin/products", multer.array("photo", 4), Products.put);
 routes.delete("/admin/products", Products.delete);
 
 module.exports = routes;
