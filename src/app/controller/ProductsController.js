@@ -1,5 +1,6 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
+const ProductFiles = require("../models/ProductFiles");
 const { formatPrice, formatStatus } = require("../../lib/utils");
 
 module.exports = {
@@ -37,8 +38,19 @@ module.exports = {
         }
       }
 
+      if (req.files.length == 0) {
+        return res.send('Please, insert at least one image!');
+      }
+
       const results = await Product.create(req.body);
       const productId = results.rows[0].id;
+
+      const productsPromise = req.files.map(file => ProductFiles.create({
+        ...file,
+        productID: productId
+      }));
+
+      await Promise.all(productsPromise);
 
       return res.redirect(`/admin/products/${productId}`);
     } catch (err) {
