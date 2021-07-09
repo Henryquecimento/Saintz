@@ -15,7 +15,6 @@ const Mask = {
   },
 };
 
-
 const PhotosUpload = {
   input: "",
   limit: 4,
@@ -89,7 +88,13 @@ const PhotosUpload = {
   },
   removePhoto(event) {
     const photoDiv = event.target.parentNode;
+    const photosArray = Array.from(PhotosUpload.preview.children);
+    const index = photosArray.indexOf(photoDiv);
 
+    console.log(index);
+
+    PhotosUpload.files.splice(index, 1);
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
     photoDiv.remove();
   }
