@@ -61,12 +61,18 @@ module.exports = {
   async show(req, res) {
     try {
       let results = await Product.find(req.params.id);
-      const product = results.rows[0];
+      let product = results.rows[0];
 
       product.price = formatPrice(product.price);
       product.status = formatStatus(product.status);
 
-      return res.render("admin/products/show", { product });
+      results = await ProductFiles.findById(req.params.id);
+      const files = results.rows.map(file => ({
+        ...file,
+        src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+      }));
+
+      return res.render("admin/products/show", { product, files });
     } catch (err) {
       throw new Error(err);
     }
