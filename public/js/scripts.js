@@ -91,11 +91,21 @@ const PhotosUpload = {
     const photosArray = Array.from(PhotosUpload.preview.children);
     const index = photosArray.indexOf(photoDiv);
 
-    console.log(index);
-
     PhotosUpload.files.splice(index, 1);
     PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
+    photoDiv.remove();
+  },
+  removeOldPhotos(event) {
+    const photoDiv = event.target.parentNode; // i
+
+    if (photoDiv) {
+      const removedPhotos = document.querySelector("input[name='removed_files']");
+
+      if (removedPhotos) {
+        removedPhotos.value += `${photoDiv.id},`;
+      }
+    }
     photoDiv.remove();
   }
 
