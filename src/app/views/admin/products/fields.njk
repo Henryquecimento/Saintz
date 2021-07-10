@@ -17,13 +17,18 @@
             </div>
         </div>
         <div id="photo-preview">
-            {% if photo %}
-                {% for image in photos %}
-                    <div class="photo">
-                        <img src="{{ image.path }}" alt="{{ image.name }}">
-                        <i class="material-icons">delete_forever</i>
+            {% if files %}
+                {% for image in files %}
+                    <div class="photo" id="{{ image.id }}">
+                        <img src="{{ image.src }}" alt="{{ image.name }}">
+                        <i 
+                            class="material-icons"
+                            onclick='PhotosUpload.removeOldPhotos(event)'
+                            >delete_forever
+                        </i>
                     </div>
                 {% endfor %}
+                <input type="hidden" name="removed_files">
             {% endif %}
         </div>
     </div>
