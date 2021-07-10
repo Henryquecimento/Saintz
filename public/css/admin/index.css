@@ -4,11 +4,12 @@ section.container {
 }
 
 section.container div.header {
-  display: grid;
-  grid-template-columns: 1fr 125px;
+  display: flex;
+  justify-content: space-between;
 }
 
-section.container div.header:first-child {
+section.container div.header:first-child,
+section.container div.body div.product_text div:first-child {
   margin: 16px 0;
   font-size: 24px;
   color: #7823ce;
@@ -36,12 +37,36 @@ div.body.card {
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* SHOW  */
+/* -- SHOW -- */
 
-section.container div.body img {
-  width: 100%;
+/* Gallery */
+section.container .gallery {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+section.container .gallery div.highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.container .gallery div.highlight img {
+  width: 600px;
   height: 430px;
   border-radius: 50px;
+}
+
+section.container .gallery div.gallery-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+section.container .gallery div.gallery-preview img {
+  width: 100px;
 }
 
 section.container div.body div.product_text {
