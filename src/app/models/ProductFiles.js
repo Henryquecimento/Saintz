@@ -26,5 +26,13 @@ module.exports = {
     values = [fileId, productID];
 
     return db.query(query, values);
+  },
+  findById(id) {
+    return db.query(`
+      SELECT files.*
+      FROM files
+      INNER JOIN product_files ON (files.id = product_files.file_id)
+      WHERE product_files.product_id = $1
+    `, [id]);
   }
 }
