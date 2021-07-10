@@ -16,8 +16,24 @@
 
         <div class="body box">
 
-            <div><img src="/img/bag3.jpg" alt="">
-                {# {{product.image} #}
+            <div class = "gallery">
+                <div class="highlight">
+                    {% if not files[0] %}
+                        <img src="http://placehold.it/500x500?text=No Photo">
+                    {% else %}
+                        <img 
+                            src="{{ files[0].src }}" 
+                            alt="{{ files[0].name }}"
+                        >
+                    {% endif %}
+                </div>
+
+                <div class="gallery-preview">
+                    {% for image in files %}
+                        <img src="{{ image.src }}" alt="{{ image.src }}">
+                    {% endfor %}
+                </div>
+            
             </div>
             <div class="product_text">
                 <div>{{product.name}}</div>
