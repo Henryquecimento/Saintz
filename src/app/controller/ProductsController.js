@@ -90,7 +90,13 @@ module.exports = {
       results = await Category.all();
       const categories = results.rows;
 
-      return res.render("admin/products/edit.njk", { product, categories });
+      results = await ProductFiles.findById(req.params.id);
+      const files = results.rows.map(file => ({
+        ...file,
+        src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
+      }));
+
+      return res.render("admin/products/edit.njk", { product, categories, files });
     } catch (err) {
       throw new Error(err);
     }
@@ -100,9 +106,29 @@ module.exports = {
       const keys = Object.keys(req.body);
 
       for (key of keys) {
-        if (req.body[key] == "") {
+        if (req.body[key] == "" && key != "removed_files") {
           return res.send("Please, you must fill all the fields up!");
         }
+      }
+
+      if (req.body.removed_files) {
+        let removedFiles = req.body.removed_files.split(',');
+        const lastIndex = removedFiles.length - 1;
+
+        removedFiles.splice(lastIndex, 1);
+
+        const filesPromise = removedFiles.map(id => ProductFiles.delete(id));
+
+        await Promise.all(filesPromise);
+      }
+
+      if (req.files) {
+        const productsPromise = req.files.map(file => ProductFiles.create({
+          ...file,
+          productID: req.body.id
+        }));
+
+        await Promise.all(productsPromise);
       }
 
       req.body.price = req.body.price.replace(/\D/g, "");
