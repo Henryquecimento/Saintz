@@ -18,16 +18,11 @@ module.exports = {
     return db.query(query, [data.name]);
   },
   find(id) {
-    const query = `
-      SELECT categories.*,
-      Array(SELECT name FROM products WHERE products.category_id = categories.id) AS total_products
+    return db.query(`
+      SELECT categories.*
       FROM categories
-      LEFT JOIN products ON (categories.id = products.category_id)
       WHERE categories.id = $1
-      GROUP BY categories.id
-    `
-
-    return db.query(query, [id]);
+    `, [id]);
   },
   update(data) {
     const query = `
