@@ -45,6 +45,14 @@ module.exports = {
       WHERE products.id = $1`;
     return db.query(query, [id]);
   },
+  findByCategory(id) {
+    return db.query(`
+      SELECT products.*
+      FROM products
+      LEFT JOIN categories ON (products.category_id = categories.id)
+      WHERE products.category_id = $1
+    `, [id]);
+  },
   update(data) {
     const query = `
       UPDATE products SET
