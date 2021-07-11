@@ -147,8 +147,13 @@ module.exports = {
     }
   },
   async delete(req, res) {
-
     try {
+      const results = await ProductFiles.findById(req.body.id);
+
+      const filesPromise = results.rows.map(file => ProductFiles.delete(file.id))
+
+      await Promise.all(filesPromise);
+
       await Product.delete(req.body.id);
 
       return res.redirect(`/admin/products/create`);
