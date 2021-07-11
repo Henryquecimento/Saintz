@@ -14,11 +14,11 @@
         </div>
 
         <div class="body card">
-            {% for products in category.total_products %}
+            {% for product in products %}
                 <div class="box">
-                    <div>{{products}}</div>
+                    <div>{{product.name}}</div>
                     <div>
-                        <a href="/admin/products">Visualize</a>
+                        <a href="/admin/products/{{ product.id }}">Visualize</a>
                     </div>
                 </div>
             {% endfor %}
