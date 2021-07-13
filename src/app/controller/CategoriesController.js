@@ -26,7 +26,6 @@ module.exports = {
 				}
 			}
 
-
 			const results = await Category.create(req.body);
 			const categoryId = results.rows[0].id;
 
@@ -78,8 +77,22 @@ module.exports = {
 		}
 	},
 	async delete(req, res) {
-		await Category.delete(req.body.id);
+		try {
+			const results = await Product.findByCategory(req.body.id);
+			const products = results.rows;
 
-		return res.redirect('/admin/categories');
+			if (products.length == 0) {
+				await Category.delete(req.body.id);
+
+				return res.redirect('/admin/categories');
+			} else {
+
+				return res.send("Category can not be deleted!")
+			}
+
+		} catch (err) {
+			throw new Error(err);
+		}
+
 	}
 };
