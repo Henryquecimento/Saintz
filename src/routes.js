@@ -1,5 +1,4 @@
 const express = require("express");
-const productData = require("./productData");
 const multer = require("./app/middlewares/multer");
 const Categories = require("./app/controller/CategoriesController");
 const Products = require("./app/controller/ProductsController");
@@ -8,7 +7,7 @@ const routes = express.Router();
 
 /* Public Access */
 routes.get("/", (req, res) => {
-  return res.render("publicAccess/index", { products: productData });
+  return res.render("publicAccess/index");
 });
 
 /* Private Access */
