@@ -7,48 +7,6 @@
   padding: 0;
 }
 
-:root {
-  /* Weight */
-  --font-semi: 600;
-  --font-bold: 700;
-
-  /* Colors */
-  --base-color: #ffffff;
-  --red-color: #ec336b;
-  --red-color-alt: #bf1447;
-  --dark-color: #1a1919;
-  --dark-color-light: #636363;
-  --gray-color: #aaa4a4;
-  --gray-color-light: #e6e0e0;
-  --purple-color: #7d67ec;
-  --blue-color: #32289b;
-
-  /* Fonts */
-  --small-font-size: 0.5rem; /* 8px */
-  --standard-font-size: 1rem; /* 16px */
-  --h2-font-size: 1.5rem; /* 24px */
-  --h1-font-size: 2rem; /* 32px */
-  --big-font-size: 3rem; /* 48px */
-
-  /* Margins */
-  --mb-1: 0.5rem;
-  --mb-2: 1rem;
-  --mb-3: 1.5rem;
-  --mb-4: 2rem;
-}
-
-/* DESKTOP VERSION */
-@media screen and (min-width: 768px) {
-  :root {
-    /* Fonts */
-    --small-font-size: 0.5rem; /* 8px */
-    --standard-font-size: 1rem; /* 16px */
-    --h2-font-size: 1.5rem; /* 24px */
-    --h1-font-size: 2.25rem; /* 36px */
-    --big-font-size: 5rem; /* 80px */
-  }
-}
-
 /* BASE */
 html {
   scroll-behavior: smooth;
@@ -78,10 +36,13 @@ a {
 
 header {
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  background-color: var(--dark-color);
-  box-shadow: 0rem 0 2rem 1rem rgba(26, 25, 25, 0.3);
+  padding: 24px;
+  color: #e9e9e9;
+  background-color: #1a1a1a;
+}
+
+header .nav,
+header .nav_list {
+  display: flex;
+  gap: 8px;
 }

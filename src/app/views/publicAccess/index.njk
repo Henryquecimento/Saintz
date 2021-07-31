@@ -1,7 +1,30 @@
 {% extends "publicAccess/layout.njk" %}
 {% block head %}
     <link rel="stylesheet" href="css/publicAccess/home_page.css">
-    {% endblock head %}
-    {% block content %}
-        <main></main>
-    {% endblock content %}
+{% endblock head %}
+
+{% block content %}
+<main>
+
+    <div class="news container">
+
+    </div>
+
+    <section class="last-added container">
+        <h2>Last Added</h2>
+        <div class="product-card grid">
+            {% for product in products %}
+                <div class="product">
+                    <div>{{ product.name }}</div>
+                    <div>{{ product.price }}</div>
+                    {% if product.price != product.price %}
+                        <div class="oldPrice">{{ product.oldPrice }}</div>
+                    {% endif %}
+                </div>
+
+            {% endfor %}
+        </div>
+    </section>    
+
+</main>
+{% endblock content %}
