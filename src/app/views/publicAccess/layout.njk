@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +7,20 @@
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="css/publicAccess/layout.css">
 
-        <title>SAINTZ</title>
-
-        {% block head %}{% endblock head %}
+        {% block head %}
+            <title>SAINTZ</title>
+        {% endblock head %}
 
     </head>
 
     <body>
-        <header>
-            <nav class="nav grid">
-                <div>
-                    <a href="/" class="nav_logo">SAINTZ</a>
-                </div>
 
-                <div class="nav_menu" id='nav-menu'>
-                    <ul class="nav_list">
-                        <li class="nav_item">
-                            <a href="/" class="nav_link active">Home</a>
-                        </li>
-
-                        <li class="nav_item">
-                            <a href="#products" class="nav_link">Products</a>
-                        </li>
-
-                        <li class="nav_item">
-                            <a href="#about" class="nav_link">About</a>
-                        </li>
-
-                    </ul>
-                </div>
-
-            </nav>
-        </header>
-
+        {% include 'parts/header.njk'%}
+        
         {% block content %}{% endblock content %}
 
-        {# FOOTER #}
-        <script src="/js/scripts.js"></script>
     </body>
+
+    {% include 'parts/footer.njk'%}
 
 </html>

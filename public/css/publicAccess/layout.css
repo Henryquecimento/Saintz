@@ -1,24 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
 
 * {
   box-sizing: border-box;
+
   margin: 0;
   border: 0;
   padding: 0;
+
+  text-decoration: none;
+  list-style-type: none;
 }
 
 /* BASE */
-html {
-  scroll-behavior: smooth;
+html,
+body {
+  min-height: 100vh;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  font-size: var(--standard-font-size);
-  font-weight: var(--font-semi);
-  color: var(--dark-color);
-  background: var(--base-color);
-  line-height: 1.6rem;
+  font-family: "Roboto", sans-serif;
+  background-color: #f7f3f3;
+  display: flex;
+  flex-direction: column;
 }
 
 ul {
@@ -32,6 +35,13 @@ a {
   color: white;
 }
 
+.container {
+  width: 90%;
+  max-width: 940px;
+
+  margin: 0 auto;
+}
+
 /* CSS */
 
 header {
@@ -41,8 +51,21 @@ header {
   background-color: #1a1a1a;
 }
 
-header .nav,
-header .nav_list {
+header div.container {
+  display: grid;
+  grid-template-columns: 220px auto 280px;
+  gap: 16px;
+}
+
+header div.container div a.logo {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 4px;
+}
+
+nav.menu ul {
   display: flex;
-  gap: 8px;
+  justify-content: space-between;
 }
