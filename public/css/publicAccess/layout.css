@@ -38,7 +38,6 @@ a {
 .container {
   width: 90%;
   max-width: 940px;
-
   margin: 0 auto;
 }
 
@@ -46,7 +45,7 @@ a {
 
 header {
   width: 100%;
-  padding: 24px;
+  padding: 24px 0;
   color: #e9e9e9;
   background-color: #1a1a1a;
 }
@@ -65,7 +64,19 @@ header div.container div a.logo {
   letter-spacing: 4px;
 }
 
+nav.menu {
+  display: flex;
+  align-items: center;
+}
+
 nav.menu ul {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Search bar */
+input.search {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
 }
