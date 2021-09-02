@@ -1,6 +1,7 @@
 {% extends "publicAccess/layout.njk" %}
 {% block head %}
     <link rel="stylesheet" href="css/publicAccess/index.css">
+    <link rel="stylesheet" href="/css/admin/index.css">
 {% endblock head %}
 
 {% block content %}
@@ -14,14 +15,23 @@
         <h2>Last Added</h2>
         <div class="product-card grid">
             {% for product in products %}
-                <div class="product">
-                    <div>{{ product.name }}</div>
-                    <div>{{ product.price }}</div>
-                    {% if product.price != product.price %}
-                        <div class="oldPrice">{{ product.oldPrice }}</div>
-                    {% endif %}
+                    <div class="box">
+                        <div class="highlight">
+                        {% if not product.files[0] %}
+                            <img src="http://placehold.it/500x500?text=No Photo">
+                        {% else %}
+                            <img 
+                                src="{{ product.files[0].src }}" 
+                                alt="{{ product.files[0].name }}"
+                            >
+                        {% endif %}
+                    </div>
+                    <div>{{product.name}}</div>
+                    <div>{{product.price}}</div>
+                    <div>
+                        <a href="/admin/products/{{product.id}}">Visualize</a>
+                    </div>
                 </div>
-
             {% endfor %}
         </div>
     </section>    

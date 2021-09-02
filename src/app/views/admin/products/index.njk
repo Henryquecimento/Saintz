@@ -15,7 +15,17 @@
 
         <div class="body card">
             {% for product in products %}
-                <div class="box">
+                    <div class="box">
+                        <div class="highlight">
+                        {% if not product.files[0] %}
+                            <img src="http://placehold.it/500x500?text=No Photo">
+                        {% else %}
+                            <img 
+                                src="{{ product.files[0].src }}" 
+                                alt="{{ product.files[0].name }}"
+                            >
+                        {% endif %}
+                    </div>
                     <div>{{product.name}}</div>
                     <div>{{product.price}}</div>
                     <div>

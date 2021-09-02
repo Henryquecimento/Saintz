@@ -31,9 +31,17 @@ section.container div.header div.edit a {
   background-color: #7823ce;
 }
 
-div.body.card {
+div.body.card,
+div.product-card {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 180px);
+}
+
+div.body.card div.highlight img,
+div.product-card div.highlight img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
 }
 
 /* -- SHOW -- */
