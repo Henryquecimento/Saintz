@@ -13,23 +13,26 @@
 
     <section class="last-added container">
         <h2>Last Added</h2>
-        <div class="product-card grid">
+        <div class="products-container grid">
             {% for product in products %}
-                    <div class="box">
+                    <div class="box image">
                         <div class="highlight">
                         {% if not product.files[0] %}
-                            <img src="http://placehold.it/500x500?text=No Photo">
+                            <a href="/admin/products/{{ product.id }}">
+                                <img src="http://placehold.it/500x500?text=No Photo">
+                            </a>
                         {% else %}
+                         <a href="/admin/products/{{ product.id }}">
                             <img 
                                 src="{{ product.files[0].src }}" 
                                 alt="{{ product.files[0].name }}"
                             >
+                         </a>
                         {% endif %}
                     </div>
-                    <div>{{product.name}}</div>
-                    <div>{{product.price}}</div>
-                    <div>
-                        <a href="/admin/products/{{product.id}}">Visualize</a>
+                    <div class="product-info">
+                        <div>{{product.name}}</div>
+                        <div>{{product.price}}</div>
                     </div>
                 </div>
             {% endfor %}

@@ -1,40 +1,41 @@
 {% extends 'admin/layout.njk' %}
-
 {% block header %}
     <link rel="stylesheet" href="/css/admin/index.css">
-{% endblock header %}
-
-{% block contents %}
-    <section class="container">
-        <div class="header">
-            <div>Product Manager</div>
-            <div class='create'>
-                <a href="/admin/products/create">Add Product</a>
-            </div>
-        </div>
-
-        <div class="body card">
-            {% for product in products %}
-                    <div class="box">
-                        <div class="highlight">
-                        {% if not product.files[0] %}
-                            <img src="http://placehold.it/500x500?text=No Photo">
-                        {% else %}
-                            <img 
-                                src="{{ product.files[0].src }}" 
-                                alt="{{ product.files[0].name }}"
-                            >
-                        {% endif %}
-                    </div>
-                    <div>{{product.name}}</div>
-                    <div>{{product.price}}</div>
-                    <div>
-                        <a href="/admin/products/{{product.id}}">Visualize</a>
-                    </div>
+    {% endblock header %}
+    {% block contents %}
+        <section class="body container">
+            <div class="header">
+                <div>Product Manager</div>
+                <div class='create'>
+                    <a href="/admin/products/create">Add Product</a>
                 </div>
-            {% endfor %}
-        </div>
-
-    </section>
-
-{% endblock contents %}
+            </div>
+                <div class="products-container grid">
+                    {% for product in products %}
+                            <div class="box image">
+                                <div class="highlight">
+                                {% if not product.files[0] %}
+                                    <a href="/admin/products/{{ product.id }}">
+                                        <img src="http://placehold.it/500x500?text=No Photo">
+                                    </a>
+                                {% else %}
+                                <a href="/admin/products/{{ product.id }}">
+                                    <img 
+                                        src="{{ product.files[0].src }}" 
+                                        alt="{{ product.files[0].name }}"
+                                    >
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="product-info">
+                                <div>{{product.name}}</div>
+                                <div>{{product.price}}</div>
+                            </div>
+                            <div>
+                                <a href="/admin/products/{{product.id}}">Visualize</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        </section>
+    {% endblock contents %}
