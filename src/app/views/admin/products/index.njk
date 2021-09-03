@@ -15,23 +15,19 @@
                             <div class="box image">
                                 <div class="highlight">
                                 {% if not product.files[0] %}
-                                    <a href="/admin/products/{{ product.id }}">
-                                        <img src="http://placehold.it/500x500?text=No Photo">
-                                    </a>
+                                    <img src="http://placehold.it/500x500?text=No Photo">
                                 {% else %}
-                                <a href="/admin/products/{{ product.id }}">
                                     <img 
                                         src="{{ product.files[0].src }}" 
                                         alt="{{ product.files[0].name }}"
                                     >
-                                </a>
                                 {% endif %}
                             </div>
                             <div class="product-info">
                                 <div>{{product.name}}</div>
                                 <div>{{product.price}}</div>
                             </div>
-                            <div>
+                            <div class='visualize'>
                                 <a href="/admin/products/{{product.id}}">Visualize</a>
                             </div>
                         </div>
