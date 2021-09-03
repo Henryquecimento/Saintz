@@ -22,7 +22,7 @@ module.exports = {
           files
         }
 
-        product.price = formatPrice(product.price);
+        products[product].price = formatPrice(products[product].price);
       }
 
 
