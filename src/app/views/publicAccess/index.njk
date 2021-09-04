@@ -31,8 +31,13 @@
                         {% endif %}
                     </div>
                     <div class="product-info">
-                        <div>{{product.name}}</div>
-                        <div>{{product.price}}</div>
+                        <a href="/admin/products/{{ product.id }}">
+                            <div class='name'>{{product.name}}</div>
+                        </a>  
+                        {% if product.old_price and product.old_price != product.price%}
+                            <div class='oldPrice'>{{product.old_price}}</div>
+                        {% endif %}
+                        <div class='price'>{{product.price}}</div>
                     </div>
                 </div>
             {% endfor %}

@@ -25,10 +25,13 @@
                             </div>
                             <div class="product-info">
                                 <div>{{product.name}}</div>
-                                <div>{{product.price}}</div>
+                                {% if product.old_price and product.old_price != product.price%}
+                                <div class='oldPrice'>{{product.old_price}}</div>
+                                {% endif %}
+                                <div class='price'>{{product.price}}</div>
                             </div>
-                            <div class='visualize'>
-                                <a href="/admin/products/{{product.id}}">Visualize</a>
+                            <div class='details'>
+                                <a href="/admin/products/{{product.id}}">Details</a>
                             </div>
                         </div>
                     {% endfor %}
