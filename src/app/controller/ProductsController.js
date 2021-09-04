@@ -1,7 +1,7 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
 const ProductFiles = require("../models/ProductFiles");
-const { formatPrice, formatStatus } = require("../../lib/utils");
+const { formatPrice, formatStatus, date } = require("../../lib/utils");
 
 module.exports = {
   async index(req, res) {
@@ -23,6 +23,7 @@ module.exports = {
         }
 
         products[product].price = formatPrice(products[product].price);
+        products[product].old_price = formatPrice(products[product].old_price);
       }
 
 
@@ -78,6 +79,8 @@ module.exports = {
 
       product.price = formatPrice(product.price);
       product.status = formatStatus(product.status);
+      product.updated_at = date(product.updated_at).format;
+
 
       results = await ProductFiles.findById(req.params.id);
       const files = results.rows.map(file => ({

@@ -22,6 +22,7 @@ module.exports = {
         }
 
         products[product].price = formatPrice(products[product].price);
+        products[product].old_price = formatPrice(products[product].old_price);
       }
 
       return res.render("publicAccess/index.njk", { products });
