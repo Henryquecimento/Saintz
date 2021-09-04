@@ -1,40 +1,41 @@
 {% extends 'admin/layout.njk' %}
 {% block header %}
-    <link rel="stylesheet" href="/css/admin/index.css">
-    {% endblock header %}
-    {% block contents %}
-        <section class="body container">
-            <div class="header">
-                <div>Product Manager</div>
-                <div class='create'>
-                    <a href="/admin/products/create">Add Product</a>
-                </div>
+    <title>Products - Maneger</title>
+{% endblock header %}
+
+{% block contents %}
+    <section class="body container">
+        <div class="header">
+            <div>Product Manager</div>
+            <div class='create'>
+                <a href="/admin/products/create">Add Product</a>
             </div>
-                <div class="products-container grid">
-                    {% for product in products %}
-                            <div class="box image">
-                                <div class="highlight">
-                                {% if not product.files[0] %}
-                                    <img src="http://placehold.it/500x500?text=No Photo">
-                                {% else %}
-                                    <img 
-                                        src="{{ product.files[0].src }}" 
-                                        alt="{{ product.files[0].name }}"
-                                    >
-                                {% endif %}
-                            </div>
-                            <div class="product-info">
-                                <div>{{product.name}}</div>
-                                {% if product.old_price and product.old_price != product.price%}
-                                <div class='oldPrice'>{{product.old_price}}</div>
-                                {% endif %}
-                                <div class='price'>{{product.price}}</div>
-                            </div>
-                            <div class='details'>
-                                <a href="/admin/products/{{product.id}}">Details</a>
-                            </div>
+        </div>
+            <div class="products-container grid">
+                {% for product in products %}
+                        <div class="box image">
+                            <div class="highlight">
+                            {% if not product.files[0] %}
+                                <img src="http://placehold.it/500x500?text=No Photo">
+                            {% else %}
+                                <img 
+                                    src="{{ product.files[0].src }}" 
+                                    alt="{{ product.files[0].name }}"
+                                >
+                            {% endif %}
                         </div>
-                    {% endfor %}
-                </div>
-        </section>
-    {% endblock contents %}
+                        <div class="product-info">
+                            <div class='name'>{{product.name}}</div>
+                            {% if product.old_price and product.old_price != product.price%}
+                            <div class='oldPrice'>{{product.old_price}}</div>
+                            {% endif %}
+                            <div class='price'>{{product.price}}</div>
+                        </div>
+                        <div class='details'>
+                            <a href="/admin/products/{{product.id}}">Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    </section>
+{% endblock contents %}
