@@ -45,25 +45,46 @@ div.product-card div.highlight img {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
-div.product-info div:first-child {
+div.product-info,
+div.product-info div:first-child,
+div.product-info div.price {
+  margin-top: 8px;
+}
+
+div.product-info div.name {
   font-size: 16px;
   line-height: 18px;
   font-weight: bold;
+  color: #101010;
   text-transform: uppercase;
 }
 
-div.product-info div:nth-child(2) {
+div.product-info div.name:hover {
+  color: #fc5404;
+  transition: color 300ms;
+  text-decoration: underline;
+}
+
+div.product-info div.oldPrice {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+  color: #777;
+  text-decoration: line-through;
+}
+
+div.product-info div.price {
   font-size: 16px;
   line-height: 18px;
   font-weight: bold;
-  color: #777;
+  color: #fc5404;
 }
 
-div.products-container div.visualize a {
+div.products-container div.details a {
   color: #7823ce;
 }
 
-div.products-container div.visualize a:hover {
+div.products-container div.details a:hover {
   text-decoration: underline;
 }
 
@@ -73,6 +94,7 @@ div.products-container div.visualize a:hover {
 section.container .gallery {
   display: grid;
   grid-template-columns: 1fr auto;
+  gap: 16px;
 }
 section.container .gallery div.highlight {
   display: flex;
@@ -83,7 +105,7 @@ section.container .gallery div.highlight {
 section.container .gallery div.highlight img {
   width: 100%;
   height: 430px;
-  border-radius: 50px;
+  border-radius: 24px;
 }
 
 section.container .gallery div.gallery-preview {
@@ -97,8 +119,32 @@ section.container .gallery div.gallery-preview {
 
 section.container .gallery div.gallery-preview img {
   width: 100px;
+  border-radius: 8px;
 }
 
 section.container div.body div.product_text {
   text-align: center;
+}
+
+/* -Details Body */
+section.container .details.body {
+  margin: 24px 0;
+  padding: 24px 16px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+section.container .details.body > div {
+  margin: 16px 0;
+}
+
+section.container .details.body div.status span {
+  background-color: #04a6e6;
+  border-radius: 8px;
+  padding: 1px 8px;
+}
+
+section.container .details.body div.status span.unvailable {
+  background-color: #ff2442;
 }
