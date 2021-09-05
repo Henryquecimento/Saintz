@@ -96,6 +96,13 @@ section.container .gallery {
   grid-template-columns: 1fr auto;
   gap: 16px;
 }
+
+section.container .gallery div.highlight img,
+section.container .gallery div.gallery-preview img {
+  cursor: pointer;
+}
+
+
 section.container .gallery div.highlight {
   display: flex;
   align-items: center;
@@ -120,13 +127,19 @@ section.container .gallery div.gallery-preview {
 section.container .gallery div.gallery-preview img {
   width: 100px;
   border-radius: 8px;
+  background-color: #777;
+  opacity: 0.5;
 }
 
-section.container div.body div.product_text {
-  text-align: center;
+section.container .gallery div.gallery-preview img.active {
+  background-color: initial;
+  opacity: 1;
 }
 
 /* -Details Body */
+section.container div.body div.product_text {
+  text-align: center;
+}
 section.container .details.body {
   margin: 24px 0;
   padding: 24px 16px;
