@@ -5,7 +5,7 @@ module.exports = {
     return db.query(`
       SELECT *
       FROM products
-      ORDER BY id
+      ORDER BY products.updated_at DESC
     `);
   },
   create(data) {
@@ -51,7 +51,7 @@ module.exports = {
       FROM products
       LEFT JOIN categories ON (products.category_id = categories.id)
       WHERE products.category_id = $1
-    `, [id]);
+      `, [id]);
   },
   update(data) {
     const query = `
