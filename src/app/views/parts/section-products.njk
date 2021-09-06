@@ -1,0 +1,41 @@
+{% macro products(products) %}
+
+<div class="products-container grid">
+  {% for product in products %}
+    <div>
+        <div class="box image">
+            <div class="highlight">
+              {% if not product.files[0] %}
+                  <a href="/admin/products/{{ product.id }}">
+                      <img src="http://placehold.it/500x500?text=No Photo">
+                  </a>
+              {% else %}
+                <a href="/admin/products/{{ product.id }}">
+                  <img 
+                      src="{{ product.files[0].src }}" 
+                      alt="{{ product.files[0].name }}"
+                  >
+                </a>
+              {% endif %}
+            </div>
+        </div>
+        <div class="product-info">
+            <a href="/admin/products/{{ product.id }}">
+                <div class='name'>{{product.name}}</div>
+            </a>  
+            {% if product.old_price and product.old_price != product.price%}
+                <div class='oldPrice'>{{product.old_price}}</div>
+            {% endif %}
+            <div class='price'>{{product.price}}</div>
+        </div>
+
+      {# if req.session #}
+        <div class='details'>
+            <a href="/admin/products/{{product.id}}">Details</a>
+        </div>
+        
+    </div>
+  {% endfor %}
+</div>
+
+{% endmacro %}
