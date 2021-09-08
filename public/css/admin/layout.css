@@ -82,3 +82,21 @@ body {
   background-color: #ffffff;
   font-family: "Open Sans", sans-serif;
 }
+
+/* SESSION HEADER */
+header.session {
+  background-color: initial;
+}
+
+header div.session.container {
+  display: initial;
+  text-align: center;
+}
+
+header div.session.container a.logo {
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 8px;
+  color: #1a1a1a;
+  font-weight: bold;
+}

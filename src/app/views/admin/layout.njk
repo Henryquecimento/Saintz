@@ -13,8 +13,10 @@
 
     </head>
     <body>
+        {% block headerPage %}
+            {% include "admin/parts/header.njk"%}
+        {% endblock headerPage %}
 
-        {% include "admin/parts/header.njk"%}
 
         {% block contents %}{% endblock contents %}
 
