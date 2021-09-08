@@ -8,6 +8,6 @@ const users = require('./users');
 
 routes.use('/', public);
 routes.use('/admin', admin);
-/* routes.use('/users', users); */
+routes.use('/users', users);
 
 module.exports = routes;
