@@ -17,6 +17,8 @@ form .header {
 form .item select,
 form .item textarea,
 form .item input[type="text"],
+form .item input[type="email"],
+form .item input[type="password"],
 form .item input[type="number"] {
   width: 100%;
   color: #777;
