@@ -9,4 +9,6 @@ const routes = express.Router();
 routes.get('/login', SessionController.loginForm);
 routes.post('/login', sessionValidators.login, SessionController.login);
 
+routes.post('/logout', SessionController.logout);
+
 module.exports = routes;

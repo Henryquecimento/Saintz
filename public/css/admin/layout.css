@@ -15,9 +15,7 @@
 }
 
 .container {
-  width: 90%;
-  max-width: 940px;
-
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -49,25 +47,26 @@
 
 /* Header */
 
-header,
-footer {
-  width: 100vw;
-}
-
 header {
   padding: 24px 0;
   color: #e9e9e9;
   background-color: #1a1a1a;
+  font-size: 16px;
+  line-height: 18px;
 }
 
-header div.container {
-  display: grid;
-  grid-template-columns: 100px 250px;
+header div.container.admin {
+  display: flex;
+  justify-content: space-between;
+}
+
+header div.container div.links {
+  display: flex;
+  gap: 32px;
 }
 
 header .container .nav_logo a,
 header .container nav .nav_links a {
-  width: 0;
   color: #e9e9e9;
   text-decoration: none;
 }
@@ -76,6 +75,19 @@ header .container .nav_logo a {
   font-size: 18px;
   line-height: 20px;
   font-weight: bold;
+}
+
+/* Logout button */
+header .container .logout button {
+  cursor: pointer;
+  background-color: initial;
+  color: #f25449;
+  font-weight: bold;
+}
+
+header .container .logout button:hover {
+  color: #f7786f;
+  transition: 300ms color;
 }
 
 body {
