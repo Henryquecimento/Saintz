@@ -2,7 +2,7 @@
 module.exports = {
 	loginForm(req, res) {
 
-		return res.render('admin/users/login.njk')
+		return res.render('admin/session/login.njk')
 	},
 	login(req, res) {
 		req.session.userId = req.user.id;
@@ -10,10 +10,12 @@ module.exports = {
 
 		return res.redirect('/admin/products');
 	},
-	/* ,
 	logout(req, res) {
+		req.session.destroy();
 
+		return res.redirect('/');
 	},
+	/* ,
 	resetForm(req, res) {
 
 	},
