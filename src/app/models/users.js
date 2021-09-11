@@ -1,6 +1,19 @@
 const db = require("./../../config/db");
 
 module.exports = {
+  post({ name, email, password }) {
+    const query = `
+      INSERT INTO users (
+        name,
+        email,
+        password
+      ) VALUES ($1, $2, $3)
+      RETURNING id
+    `;
+
+
+    return db.query(query, [name, email, password]);
+  },
   async findOne(filters) {
     let query = `SELECT * FROM users`
 
