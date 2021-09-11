@@ -1,0 +1,21 @@
+{% extends "admin/layout.njk" %}
+
+{% block header %}
+<title>Users - Create</title>
+{% endblock header %}
+
+{% block contents %}
+
+    <section class="container form users">
+        <form method="POST" action="/users">
+            <div class="header">SING UP</div>
+
+            <div class="fields">
+                {% include "admin/users/fields.njk" %}
+            </div>
+            <button class="button" type="submit">Sign Up</button>
+        </form>
+
+    </section>
+
+{% endblock contents %}
