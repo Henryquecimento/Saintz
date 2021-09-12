@@ -4,9 +4,13 @@
 <title>Users - Create</title>
 {% endblock header %}
 
+{% block headerPage %}
+    {% include "parts/header-session.njk"%}
+{% endblock headerPage %}
+
 {% block contents %}
 
-    <section class="container form users">
+    <section class="session container form users">
         <form method="POST" action="/users">
             <div class="header">SING UP</div>
 
