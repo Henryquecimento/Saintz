@@ -4,8 +4,11 @@ const { hash } = require('bcrypt');
 const mailer = require('../../lib/mailer');
 
 module.exports = {
-	index(req, res) {
-		return res.render('admin/users/index.njk');
+	async index(req, res) {
+		const results = await User.list();
+		const users = results.rows;
+
+		return res.render('admin/users/index.njk', { users });
 	},
 	create(req, res) {
 		return res.render('admin/users/create.njk');
@@ -46,6 +49,6 @@ module.exports = {
 			password: encryptedPassword
 		});
 
-		return res.redirect('/admin/users');
+		return res.redirect('/users');
 	},
 };
