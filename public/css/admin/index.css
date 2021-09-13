@@ -163,6 +163,16 @@ section.container .details.body div.status span.unvailable {
 }
 
 /* USERS */
+section.container .users-container .box > div {
+  margin: 2px 0;
+}
+section.container .users-container .tag span {
+  background-color: #04a6e6;
+  border-radius: 8px;
+  padding: 0 8px;
+  text-transform: lowercase;
+}
+
 section.container .users-container .buttons a,
 section.container .users-container .buttons button {
   font-size: 14px;

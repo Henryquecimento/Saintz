@@ -17,7 +17,11 @@
             {% for user in users %}
                 <div class="box">
                     <div>{{user.name}}</div>
-                    <div>{{user.email}}</div>
+                    {% if user.is_admin == true%}
+                        <div class='tag'>
+                            <span>Admin</span> 
+                        </div>
+                    {% endif %}
                     <div class="buttons">
                         <div class='visualize'>
                             <a href="/admin/users/{{user.id}}/edit">Visualize</a>
