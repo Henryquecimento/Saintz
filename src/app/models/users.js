@@ -1,6 +1,12 @@
 const db = require("./../../config/db");
 
 module.exports = {
+  list() {
+    return db.query(`
+      SELECT * FROM USERS
+      ORDER BY updated_at
+    `);
+  },
   post({ name, email, password }) {
     const query = `
       INSERT INTO users (
