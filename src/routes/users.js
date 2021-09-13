@@ -14,6 +14,8 @@ routes.post('/logout', SessionController.logout);
 
 /* USERS */
 
+routes.get('/', UsersController.index);
+
 routes.get('/create', UsersController.create);
 routes.post('/', UsersController.post);
 
