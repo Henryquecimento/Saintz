@@ -1,0 +1,38 @@
+{% extends 'admin/layout.njk' %}
+
+{% block header %}
+    <title>SAINTZ - Categories</title>
+{% endblock header %}
+
+{% block contents %}
+    <section class="container">
+        <div class="header">
+            <div>Users Manager</div>
+            <div class='create'>
+                <a href="/users/create">Add User</a>
+            </div>
+        </div>
+
+        <div class="users-container">
+            {% for user in users %}
+                <div class="box">
+                    <div>{{user.name}}</div>
+                    <div>{{user.email}}</div>
+                    <div class="buttons">
+                        <div class='visualize'>
+                            <a href="/admin/users/{{user.id}}/edit">Visualize</a>
+                        </div>
+                        <div>
+                            <form id="form-delete" method="POST" action="/users?_method=DELETE">
+                                <input type="hidden" name="id" value='{{ user.id }}'>
+                                <button type="submit">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+{% endblock contents %}
