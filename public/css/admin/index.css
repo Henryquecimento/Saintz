@@ -32,7 +32,8 @@ section.container div.header div.edit a {
 }
 
 div.products-container,
-div.category-container {
+div.category-container,
+div.users-container {
   display: grid;
   grid-template-columns: repeat(6, 180px);
 }
@@ -102,7 +103,6 @@ section.container .gallery div.gallery-preview img {
   cursor: pointer;
 }
 
-
 section.container .gallery div.highlight {
   display: flex;
   align-items: center;
@@ -160,4 +160,25 @@ section.container .details.body div.status span {
 
 section.container .details.body div.status span.unvailable {
   background-color: #ff2442;
+}
+
+/* USERS */
+section.container .users-container .buttons a,
+section.container .users-container .buttons button {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+section.container .users-container .buttons a {
+  color: #7823ce;
+}
+
+section.container .users-container .buttons button {
+  color: #f25449;
+}
+
+section.container .users-container .buttons a:hover,
+section.container .users-container .buttons button:hover {
+  text-decoration: underline;
 }
