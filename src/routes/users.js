@@ -13,6 +13,8 @@ routes.post('/login', sessionValidators.login, SessionController.login);
 routes.post('/logout', SessionController.logout);
 routes.get('/forgot-password', SessionController.forgotForm);
 routes.post('/forgot-password', sessionValidators.forgot, SessionController.forgot);
+routes.get('/reset-password', SessionController.resetForm);
+routes.post('/reset-password', sessionValidators.reset, SessionController.reset);
 
 /* USERS */
 
