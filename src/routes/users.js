@@ -11,6 +11,8 @@ routes.get('/login', SessionController.loginForm);
 routes.post('/login', sessionValidators.login, SessionController.login);
 
 routes.post('/logout', SessionController.logout);
+routes.get('/forgot-password', SessionController.forgotForm);
+routes.post('/forgot-password', sessionValidators.forgot, SessionController.forgot);
 
 /* USERS */
 
