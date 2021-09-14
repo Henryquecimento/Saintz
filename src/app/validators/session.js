@@ -32,7 +32,25 @@ async function forgot(req, res, next) {
   next();
 }
 
+async function reset(req, res, next) {
+  const { email, password, passwordRepeat } = req.body;
+
+  const user = await User.findOne({
+    where: { email }
+  });
+
+  if (!user) return res.send('User does not exist!');
+
+  if (password != passwordRepeat) return res.send('Password Mismatch! Please, try again!');
+
+  req.user = user;
+
+  next();
+}
+
+
 module.exports = {
   login,
-  forgot
+  forgot,
+  reset
 }
