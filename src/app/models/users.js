@@ -20,6 +20,28 @@ module.exports = {
 
     return db.query(query, [name, email, password]);
   },
+  async update(id, fields) {
+    let query = `UPDATE users SET`;
+
+    Object.keys(fields).map((key, index, array) => {
+      if ((index + 1) < array.length) {
+        query = `
+        ${query}
+        ${key} = '${fields[key]}',      
+      `
+      } else {
+        query = `
+        ${query}
+        ${key} = '${fields[key]}'
+        WHERE id = ${id}    
+      `
+      }
+    });
+
+    await db.query(query);
+
+    return;
+  },
   async findOne(filters) {
     let query = `SELECT * FROM users`
 
