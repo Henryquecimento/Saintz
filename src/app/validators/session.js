@@ -18,6 +18,21 @@ async function login(req, res, next) {
   next();
 }
 
+async function forgot(req, res, next) {
+  const { email } = req.body;
+
+  const user = await User.findOne({
+    where: { email }
+  });
+
+  if (!user) return res.send('User does not exist!');
+
+  req.user = user;
+
+  next();
+}
+
 module.exports = {
-  login
+  login,
+  forgot
 }
