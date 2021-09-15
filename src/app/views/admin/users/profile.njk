@@ -1,0 +1,81 @@
+{% extends "admin/layout.njk" %}
+
+{% block header %}
+    <title>User - Profile</title>
+{% endblock header %}
+
+{% block contents %}
+
+    <section class="container form">
+        <form method="POST" action="/users/profile?_method=PUT">
+            <div class="header">
+              <h3>Hello {{ user.name }}!</h3>
+            </div>
+
+            <div class="fields">
+
+                <div class="item">
+                    <div>Name</div>
+                    <div>
+                        <input 
+                            type="text" 
+                            name="name"
+                            placeholder="Hey! What's your name?"
+                            value='{{ user.name }}'>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Email</div>
+                    <div>
+                        <input 
+                            type="email" 
+                            name="email"
+                            value='{{ user.email }}'
+                            placeholder='Insert your email to recover you password'>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div>Password</div>
+                    <div>
+                        <input 
+                            type="password" 
+                            name="password"
+                        >
+                    </div>
+                </div>
+              
+                <div class="item">
+                    <div>
+                        <input 
+                            type="checkbox" 
+                            name="is_admin"
+                            {% if checked %}
+                            value='true'
+                            {% endif %}
+                            {% if user.is_admin == 'true' %}
+                            checked='checked'
+                            {% endif %}
+                        >
+                    </div>
+                    <div>Administrator</div>
+                </div>
+
+                <input type="hidden" name="id" value='{{ user.id }}'>
+            </div>
+            
+            <div class="buttons">
+                <button class="button edit" type="submit">Save</button>
+                <button form ='form-delete' class="button delete" type="submit">Delete</button>
+              </div>
+        </form>
+
+        <form id="form-delete" method="POST" action="/users/profile?_method=DELETE">
+            <input type="hidden" name="id" value='{{ user.id }}'>
+        </form>
+
+    </section>
+    {% include "admin/confirm.njk" %}
+
+{% endblock contents %}
