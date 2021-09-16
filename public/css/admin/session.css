@@ -17,7 +17,7 @@ section.session.container .buttons a.forgot-password:hover {
 }
 
 /* Password Recovery */
-section.session.container h3 {
+section.container h3 {
   color: #208ff7;
   text-transform: uppercase;
   text-align: center;
