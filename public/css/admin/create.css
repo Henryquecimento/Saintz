@@ -72,13 +72,15 @@ form .item span {
 }
 
 /* DELELE BUTTON */
-.button.delete {
+.button.delete,
+section.session.container .buttons a.cancel.button {
   margin-top: 0;
   transition: all 300ms;
   background-color: #ee3731;
 }
 
-.button.delete:hover {
+.button.delete:hover,
+section.session.container .buttons a.cancel.button:hover {
   background-color: #c51913;
 }
 
