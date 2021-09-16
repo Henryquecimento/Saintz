@@ -51,4 +51,22 @@ module.exports = {
 
 		return res.redirect('/users');
 	},
+	async edit(req, res) {
+
+		const results = await User.find(req.params.id);
+		const user = results.rows[0];
+
+		return res.render('admin/users/edit.njk', { user });
+	},
+	async put(req, res) {
+
+		const { id, name, email } = req.body;
+
+		await User.update(id, {
+			name,
+			email
+		});
+
+		return res.redirect('/users');
+	},
 };
