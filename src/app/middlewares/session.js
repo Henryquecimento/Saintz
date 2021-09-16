@@ -1,11 +1,21 @@
-function onlyAdmin(req, res, next) {
-  if (!req.session.isAdmin) {
+
+function onlyUsers(req, res, next) {
+  if (!req.session.userId) {
     return res.redirect('/users/login');
   }
 
   next();
 }
 
+function userIsLogged(req, res, next) {
+  if (req.session.userId) {
+    return res.redirect('/users');
+  }
+
+  next();
+}
+
 module.exports = {
-  onlyAdmin
+  onlyUsers,
+  userIsLogged
 }
