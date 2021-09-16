@@ -46,22 +46,6 @@
                     </div>
                 </div>
               
-                <div class="item">
-                    <div>
-                        <input 
-                            type="checkbox" 
-                            name="is_admin"
-                            {% if checked %}
-                            value='true'
-                            {% endif %}
-                            {% if user.is_admin == 'true' %}
-                            checked='checked'
-                            {% endif %}
-                        >
-                    </div>
-                    <div>Administrator</div>
-                </div>
-
                 <input type="hidden" name="id" value='{{ user.id }}'>
             </div>
             
