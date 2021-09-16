@@ -2,3 +2,23 @@ section.session.container.form {
   width: 450px;
   padding: 32px;
 }
+
+section.session.container .buttons a.forgot-password {
+  color: #101010;
+  display: flex;
+  justify-content: end;
+  margin: 32px 0;
+}
+
+section.session.container .buttons a.forgot-password:hover {
+  text-decoration: underline;
+  color: #f25449;
+  transition: color 300ms;
+}
+
+/* Password Recovery */
+section.session.container h3 {
+  color: #208ff7;
+  text-transform: uppercase;
+  text-align: center;
+}
