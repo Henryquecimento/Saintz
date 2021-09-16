@@ -34,7 +34,23 @@ async function update(req, res, next) {
   next();
 }
 
+async function edit(req, res, next) {
+  const { password } = req.body;
+
+  if (!password) return res.send('Insert the password first to save the changes')
+
+  const result = await User.find(req.session.userId);
+  const userAdmin = result.rows[0];
+
+  const passed = await compare(password, userAdmin.password);
+
+  if (!passed) return res.send('Invalid password! Please, try again!')
+
+  next();
+}
+
 module.exports = {
   show,
-  update
+  update,
+  edit
 }
