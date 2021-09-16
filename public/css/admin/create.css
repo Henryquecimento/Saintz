@@ -160,3 +160,10 @@ form .item #photo-preview {
 #photo-preview .photo:hover i {
   opacity: 1;
 }
+
+/* USERS EDIT - ADMIN */
+form .item.isAdmin {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 36px;
+}
