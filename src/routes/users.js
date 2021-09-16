@@ -7,6 +7,8 @@ const ProfileController = require('../app/controller/ProfileController');
 const sessionValidators = require('../app/validators/session');
 const userValidators = require('../app/validators/users');
 
+const { onlyAdmin } = require('../app/middlewares/session');
+
 const routes = express.Router();
 
 routes.get('/login', SessionController.loginForm);
@@ -18,13 +20,15 @@ routes.get('/reset-password', SessionController.resetForm);
 routes.post('/reset-password', sessionValidators.reset, SessionController.reset);
 
 /* USERS */
+routes.get('/profile', userValidators.show, ProfileController.index);
+routes.put('/profile', userValidators.update, ProfileController.put);
 
 routes.get('/', UsersController.index);
 
 routes.get('/create', UsersController.create);
 routes.post('/', UsersController.post);
+routes.get('/:id/edit', onlyAdmin, UsersController.edit);
+routes.put('/', userValidators.edit, UsersController.put);
 
-routes.get('/profile', userValidators.show, ProfileController.index);
-routes.put('/profile', userValidators.update, ProfileController.put);
 
 module.exports = routes;
