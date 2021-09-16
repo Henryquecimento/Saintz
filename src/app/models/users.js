@@ -42,6 +42,12 @@ module.exports = {
 
     return;
   },
+  async find(id) {
+    return db.query(`
+      SELECT * FROM users
+      WHERE id = ${id}
+    `);
+  },
   async findOne(filters) {
     let query = `SELECT * FROM users`
 
