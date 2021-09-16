@@ -7,11 +7,12 @@ const ProfileController = require('../app/controller/ProfileController');
 const sessionValidators = require('../app/validators/session');
 const userValidators = require('../app/validators/users');
 
-const { onlyAdmin } = require('../app/middlewares/session');
+const { onlyUsers, userIsLogged } = require('../app/middlewares/session');
+const { onlyAdmin } = require('../app/middlewares/users');
 
 const routes = express.Router();
 
-routes.get('/login', SessionController.loginForm);
+routes.get('/login', userIsLogged, SessionController.loginForm);
 routes.post('/login', sessionValidators.login, SessionController.login);
 routes.post('/logout', SessionController.logout);
 routes.get('/forgot-password', SessionController.forgotForm);
@@ -20,14 +21,14 @@ routes.get('/reset-password', SessionController.resetForm);
 routes.post('/reset-password', sessionValidators.reset, SessionController.reset);
 
 /* USERS */
-routes.get('/profile', userValidators.show, ProfileController.index);
+routes.get('/profile', onlyUsers, userValidators.show, ProfileController.index);
 routes.put('/profile', userValidators.update, ProfileController.put);
 
-routes.get('/', UsersController.index);
+routes.get('/', onlyUsers, UsersController.index);
 
 routes.get('/create', UsersController.create);
 routes.post('/', UsersController.post);
-routes.get('/:id/edit', onlyAdmin, UsersController.edit);
+routes.get('/:id/edit', onlyUsers, onlyAdmin, UsersController.edit);
 routes.put('/', userValidators.edit, UsersController.put);
 
 
