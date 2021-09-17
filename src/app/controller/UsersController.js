@@ -69,4 +69,9 @@ module.exports = {
 
 		return res.redirect('/users');
 	},
+	async delete(req, res) {
+		await User.delete(req.body.id);
+
+		return res.redirect('/users');
+	}
 };
