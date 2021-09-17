@@ -68,5 +68,11 @@ module.exports = {
     const results = await db.query(query);
 
     return results.rows[0];
+  },
+  delete(id) {
+    return db.query(`
+      DELETE FROM users
+      WHERE id = ${id}
+    `);
   }
 };
