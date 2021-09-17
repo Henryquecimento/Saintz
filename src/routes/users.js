@@ -30,6 +30,7 @@ routes.get('/create', UsersController.create);
 routes.post('/', UsersController.post);
 routes.get('/:id/edit', onlyUsers, onlyAdmin, UsersController.edit);
 routes.put('/', userValidators.edit, UsersController.put);
+routes.delete('/', onlyAdmin, UsersController.delete);
 
 
 module.exports = routes;
