@@ -23,15 +23,25 @@
                         </div>
                     {% endif %}
                     <div class="buttons">
-                        <div class='visualize'>
-                            <a href="/users/{{user.id}}/edit">Visualize</a>
+                        <div class='visualize'>{# CHANGE THE CLASS NAME #}
+                            <a 
+                                {% if user.id == session.userId %}
+                                href="/users/profile"
+                                {% else %}
+                                href="/users/{{user.id}}/edit"
+                                {% endif %}
+                            >Edit</a>
                         </div>
+
                         <div>
+                        {% if user.id != session.userId %}
                             <form id="form-delete" method="POST" action="/users?_method=DELETE">
                                 <input type="hidden" name="id" value='{{ user.id }}'>
                                 <button type="submit">Remove</button>
                             </form>
+                        {% endif %}
                         </div>
+                        
                     </div>
                 </div>
             {% endfor %}
