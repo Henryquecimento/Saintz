@@ -49,7 +49,10 @@ module.exports = {
 			password: encryptedPassword
 		});
 
-		return res.redirect('/users');
+		return res.render('admin/users/index.njk', {
+			user: req.body,
+			success: "Usuário criado com sucesso!"
+		})
 	},
 	async edit(req, res) {
 
@@ -67,11 +70,16 @@ module.exports = {
 			email
 		});
 
-		return res.redirect('/users');
+		return res.render('admin/users/index.njk', {
+			user: req.body,
+			success: "Usuário atualizado com sucesso!"
+		})
 	},
 	async delete(req, res) {
 		await User.delete(req.body.id);
 
-		return res.redirect('/users');
+		return res.render('admin/users/index.njk', {
+			success: "Usuário removido com sucesso!"
+		});
 	}
 };
