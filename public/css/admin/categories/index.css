@@ -1,0 +1,30 @@
+/* replace for card container */
+div.category-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.box > div {
+  font-size: 18px;
+  line-height: 20px;
+
+  color: #101010;
+}
+
+.box > div a {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: var(--grape-color);
+}
+
+.box > div a:hover {
+  color: var(--orange-color);
+  text-decoration: underline;
+
+  transition: all 300ms;
+}

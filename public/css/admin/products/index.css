@@ -31,11 +31,10 @@ section.container div.header div.edit a {
   background-color: #7823ce;
 }
 
-div.products-container,
-div.category-container,
-div.users-container {
+div.products-container {
   display: grid;
-  grid-template-columns: repeat(6, 180px);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 }
 
 div.products-container div.highlight img,
@@ -121,7 +120,7 @@ section.container .gallery div.gallery-preview {
   align-items: center;
 
   gap: 16px;
-  background-color: rgba(255, 255, 255, 0.6);
+  /* background-color: rgba(255, 255, 255, 0.6); */
 }
 
 section.container .gallery div.gallery-preview img {
@@ -160,35 +159,4 @@ section.container .details.body div.status span {
 
 section.container .details.body div.status span.unvailable {
   background-color: #ff2442;
-}
-
-/* USERS */
-section.container .users-container .box > div {
-  margin: 2px 0;
-}
-section.container .users-container .tag span {
-  background-color: #04a6e6;
-  border-radius: 8px;
-  padding: 0 8px;
-  text-transform: lowercase;
-}
-
-section.container .users-container .buttons a,
-section.container .users-container .buttons button {
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: bold;
-}
-
-section.container .users-container .buttons a {
-  color: #7823ce;
-}
-
-section.container .users-container .buttons button {
-  color: #f25449;
-}
-
-section.container .users-container .buttons a:hover,
-section.container .users-container .buttons button:hover {
-  text-decoration: underline;
 }

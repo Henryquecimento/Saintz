@@ -1,0 +1,36 @@
+/* USERS */
+/* replace for  card container */
+div.users-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+section.container .users-container .box > div {
+  margin: 2px 0;
+}
+section.container .users-container .tag span {
+  background-color: #04a6e6;
+  border-radius: 4px;
+  padding: 0 8px;
+  text-transform: lowercase;
+}
+
+section.container .users-container .buttons a,
+section.container .users-container .buttons button {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+section.container .users-container .buttons a {
+  color: #7823ce;
+}
+
+section.container .users-container .buttons button {
+  color: #f25449;
+}
+
+section.container .users-container .buttons a:hover,
+section.container .users-container .buttons button:hover {
+  text-decoration: underline;
+}
