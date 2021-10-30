@@ -22,7 +22,6 @@ form .item input[type="password"],
 form .item input[type="number"] {
   width: 100%;
   color: #777;
-  margin: 12px 0;
   outline: none;
   font-size: 14px;
   padding: 2px 4px;
