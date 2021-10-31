@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const ProductFiles = require("../models/ProductFiles");
+const ProductFile = require("../models/ProductFile");
 const { formatPrice } = require("../../lib/utils");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
       let products = results.rows;
 
       for (product in products) {
-        results = await ProductFiles.findById(products[product].id);
+        results = await ProductFile.findById(products[product].id);
         let files = results.rows.map(file => ({
           ...file,
           filename: file.name,

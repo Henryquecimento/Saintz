@@ -1,4 +1,4 @@
-const User = require('../models/users');
+const User = require('../models/User');
 const mailer = require('../../lib/mailer');
 const crypto = require('crypto');
 const { hash } = require('bcrypt');

@@ -1,5 +1,5 @@
 const { compare } = require('bcrypt');
-const User = require('../models/users');
+const User = require('../models/User');
 
 async function show(req, res, next) {
   const { userId: id } = req.session;

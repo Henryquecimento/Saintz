@@ -1,6 +1,6 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
-const ProductFiles = require("../models/ProductFiles");
+const ProductFile = require("../models/ProductFile");
 const { formatPrice, formatStatus, date } = require("../../lib/utils");
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
       let products = results.rows;
 
       for (product in products) {
-        results = await ProductFiles.findById(products[product].id);
+        results = await ProductFile.findById(products[product].id);
         let files = results.rows.map(file => ({
           ...file,
           filename: file.name,
@@ -59,7 +59,7 @@ module.exports = {
       const results = await Product.create(req.body);
       const productId = results.rows[0].id;
 
-      const productsPromise = req.files.map(file => ProductFiles.create({
+      const productsPromise = req.files.map(file => ProductFile.create({
         ...file,
         productID: productId
       }));
@@ -82,7 +82,7 @@ module.exports = {
       product.updated_at = date(product.updated_at).format;
 
 
-      results = await ProductFiles.findById(req.params.id);
+      results = await ProductFile.findById(req.params.id);
       const files = results.rows.map(file => ({
         ...file,
         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
@@ -106,7 +106,7 @@ module.exports = {
       results = await Category.all();
       const categories = results.rows;
 
-      results = await ProductFiles.findById(req.params.id);
+      results = await ProductFile.findById(req.params.id);
       const files = results.rows.map(file => ({
         ...file,
         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
@@ -133,13 +133,13 @@ module.exports = {
 
         removedFiles.splice(lastIndex, 1);
 
-        const filesPromise = removedFiles.map(id => ProductFiles.delete(id));
+        const filesPromise = removedFiles.map(id => ProductFile.delete(id));
 
         await Promise.all(filesPromise);
       }
 
       if (req.files) {
-        const productsPromise = req.files.map(file => ProductFiles.create({
+        const productsPromise = req.files.map(file => ProductFile.create({
           ...file,
           productID: req.body.id
         }));
@@ -164,9 +164,9 @@ module.exports = {
   },
   async delete(req, res) {
     try {
-      const results = await ProductFiles.findById(req.body.id);
+      const results = await ProductFile.findById(req.body.id);
 
-      const filesPromise = results.rows.map(file => ProductFiles.delete(file.id))
+      const filesPromise = results.rows.map(file => ProductFile.delete(file.id))
 
       await Promise.all(filesPromise);
 
