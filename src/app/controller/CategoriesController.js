@@ -26,8 +26,9 @@ module.exports = {
 				}
 			}
 
-			const results = await Category.create(req.body);
-			const categoryId = results.rows[0].id;
+			const categoryId = await Category.create({
+				name: req.body.name
+			});
 
 			return res.redirect(`/admin/categories/${categoryId}`);
 		} catch (err) {
