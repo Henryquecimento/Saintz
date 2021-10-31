@@ -1,21 +1,16 @@
 const db = require("./../../config/db");
+const Base = require('./Base');
+
+Base.init({ table: 'categories' });
 
 module.exports = {
+  ...Base,
   all() {
     return db.query(`
       SELECT * 
       FROM categories
       ORDER BY id
     `);
-  },
-  create(data) {
-    const query = `
-      INSERT INTO categories (
-        name
-      ) VALUES ($1)
-      RETURNING id`;
-
-    return db.query(query, [data.name]);
   },
   find(id) {
     return db.query(`
