@@ -4,8 +4,7 @@ const Product = require("../models/Product");
 module.exports = {
 	async index(req, res) {
 		try {
-			const results = await Category.all();
-			const categories = results.rows;
+			const categories = await Category.findAll();
 
 			return res.render("admin/categories/index.njk", { categories });
 		} catch (err) {
@@ -39,10 +38,13 @@ module.exports = {
 	},
 	async show(req, res) {
 		try {
-			let results = await Category.find(req.params.id);
-			const category = results.rows[0];
+			const category = await Category.findOne({
+				where: {
+					id: req.params.id
+				}
+			});
 
-			results = await Product.findByCategory(req.params.id);
+			let results = await Product.findByCategory(req.params.id);
 			const products = results.rows;
 
 			return res.render("admin/categories/show", { category, products });
@@ -52,8 +54,11 @@ module.exports = {
 	},
 	async edit(req, res) {
 		try {
-			const results = await Category.find(req.params.id);
-			const category = results.rows[0];
+			const category = await Category.findOne({
+				where: {
+					id: req.params.id
+				}
+			});
 
 			return res.render("admin/categories/edit.njk", { category });
 		} catch (err) {
