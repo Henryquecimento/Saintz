@@ -75,7 +75,9 @@ module.exports = {
 				}
 			}
 
-			await Category.update(req.body);
+			await Category.update(req.body.id, {
+				name: req.body.name
+			});
 
 			return res.redirect(`/admin/categories/${req.body.id}`);
 		} catch (err) {
