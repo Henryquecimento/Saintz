@@ -61,8 +61,24 @@ const Base = {
     const results = await find(filters, this.table);
 
     return results.rows;
-  }
+  },
+  async update(id, fields) {
+    let update = [];
 
+    Object.keys(fields).map(key => {
+
+      const line = `${key} = '${fields[key]}'`
+
+      update.push(line);
+    });
+
+    const query = `
+    UPDATE ${this.table} SET
+    ${update.join(',')}
+    WHERE id = ${id}
+    `
+    return db.query(query);
+  }
 }
 
 module.exports = Base;
