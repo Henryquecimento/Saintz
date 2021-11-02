@@ -78,6 +78,12 @@ const Base = {
     WHERE id = ${id}
     `
     return db.query(query);
+  },
+  async delete(id) {
+    return db.query(`
+    DELETE FROM ${this.table}
+    WHERE id = ${id}
+    `);
   }
 }
 
