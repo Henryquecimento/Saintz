@@ -34,8 +34,7 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      const results = await Category.all();
-      const categories = results.rows;
+      const categories = await Category.findAll();
 
       return res.render("admin/products/create.njk", { categories });
     } catch (err) {
@@ -103,8 +102,7 @@ module.exports = {
       product.old_price = formatPrice(product.old_price);
       product.price = formatPrice(product.price);
 
-      results = await Category.all();
-      const categories = results.rows;
+      const categories = await Category.findAll();
 
       results = await ProductFile.findById(req.params.id);
       const files = results.rows.map(file => ({
