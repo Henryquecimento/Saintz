@@ -6,11 +6,10 @@ const { formatPrice, formatStatus, date } = require("../../lib/utils");
 module.exports = {
   async index(req, res) {
     try {
-      let results = await Product.all();
-      let products = results.rows;
+      let products = await Product.findAll();
 
       for (product in products) {
-        results = await ProductFile.findById(products[product].id);
+        let results = await ProductFile.findById(products[product].id);
         let files = results.rows.map(file => ({
           ...file,
           filename: file.name,
@@ -55,8 +54,18 @@ module.exports = {
         return res.send('Please, insert at least one image!');
       }
 
-      const results = await Product.create(req.body);
-      const productId = results.rows[0].id;
+      req.body.price = req.body.price.replace(/\D/g, "");
+
+      const productId = await Product.create({
+        category_id: req.body.category_id,
+        user_id: req.body.user_id || 1,
+        name: req.body.name,
+        description: req.body.description,
+        old_price: req.body.old_price || req.body.price,
+        price: req.body.price,
+        quantity: req.body.quantity,
+        status: req.body.status || 1,
+      });
 
       const productsPromise = req.files.map(file => ProductFile.create({
         ...file,
@@ -176,3 +185,31 @@ module.exports = {
     }
   },
 };
+
+
+/*
+
+create(data) {
+    const query = `
+        INSERT INTO products (
+
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING id`;
+
+    data.price = data.price.replace(/\D/g, "");
+
+    const values = [
+      data.category_id,
+      data.user_id ,
+      data.name,
+      data.description,
+      data.old_price || data.price,
+      data.price,
+      data.quantity,
+      data.status || 1,
+    ];
+
+    return db.query(query, values);
+  },
+
+*/

@@ -5,11 +5,10 @@ const { formatPrice } = require("../../lib/utils");
 module.exports = {
   async index(req, res) {
     try {
-      let results = await Product.all();
-      let products = results.rows;
+      let products = await Product.findAll();
 
       for (product in products) {
-        results = await ProductFile.findById(products[product].id);
+        let results = await ProductFile.findById(products[product].id);
         let files = results.rows.map(file => ({
           ...file,
           filename: file.name,
