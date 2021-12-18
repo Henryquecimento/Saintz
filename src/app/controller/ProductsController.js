@@ -1,30 +1,13 @@
 const Product = require("../models/Product");
 const Category = require("../models/Category");
+const { LoadProduct } = require('../services/LoadProductServices');
 const ProductFile = require("../models/ProductFile");
-const { formatPrice, formatStatus, date } = require("../../lib/utils");
+const { formatPrice } = require("../../lib/utils");
 
 module.exports = {
   async index(req, res) {
     try {
-      let products = await Product.findAll();
-
-      for (product in products) {
-        let results = await ProductFile.findById(products[product].id);
-        let files = results.rows.map(file => ({
-          ...file,
-          filename: file.name,
-          src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-        }));
-
-        products[product] = {
-          ...products[product],
-          files
-        }
-
-        products[product].price = formatPrice(products[product].price);
-        products[product].old_price = formatPrice(products[product].old_price);
-      }
-
+      const products = await LoadProduct.load("products");
 
       return res.render("admin/products/index.njk", { products });
     } catch (err) {
@@ -82,21 +65,14 @@ module.exports = {
   },
   async show(req, res) {
     try {
-      let results = await Product.find(req.params.id);
-      let product = results.rows[0];
+      const product = await LoadProduct.load("product", {
+        where: {
+          id: req.params.id
+        }
+      });
 
-      product.price = formatPrice(product.price);
-      product.status = formatStatus(product.status);
-      product.updated_at = date(product.updated_at).format;
+      return res.render("admin/products/show", { product }); // { product, files }
 
-
-      results = await ProductFile.findById(req.params.id);
-      const files = results.rows.map(file => ({
-        ...file,
-        src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-      }));
-
-      return res.render("admin/products/show", { product, files });
     } catch (err) {
       throw new Error(err);
     }

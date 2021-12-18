@@ -1,6 +1,6 @@
 const Product = require("../models/Product");
 const ProductFile = require("../models/ProductFile");
-
+const { formatPrice, formatStatus, date } = require("../../lib/utils");
 
 async function getImage(productId) {
   let files = await ProductFile.findById(productId);
@@ -17,16 +17,19 @@ async function getImage(productId) {
 async function format(product) {
   const files = await getImage(product.id);
 
-  console.log(files)
   if (files[0] != undefined) {
     product.img = files[0].src;
+    product.filename = files[0].name;
   } else {
     product.img = null;
+    product.filename = null;
   }
 
   product.files = files;
-  /*   product.img = files[0].src; */
-  product.filename = files[0].name;
+  product.price = formatPrice(product.price);
+  product.old_price = formatPrice(product.old_price);
+  product.status = formatStatus(product.status);
+  product.updated_at = date(product.updated_at).format;
 
   return product;
 }
@@ -48,7 +51,7 @@ const LoadProduct = {
 
     const productsPromise = products.map(format);
 
-    return Promise.all(productsPromise);
+    return await Promise.all(productsPromise);
   }
 }
 
