@@ -6,14 +6,6 @@ Base.init({ table: "products" });
 
 module.exports = {
   ...Base,
-  find(id) {
-    const query = `SELECT products.*,
-      (SELECT name FROM categories WHERE categories.id = products.category_id) as category_name
-      FROM products
-      LEFT JOIN categories ON (products.category_id = categories.id)
-      WHERE products.id = $1`;
-    return db.query(query, [id]);
-  },
   findByCategory(id) {
     return db.query(`
       SELECT products.*
