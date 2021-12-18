@@ -28,13 +28,15 @@ module.exports = {
 
     return db.query(query, values);
   },
-  findById(id) {
-    return db.query(`
-      SELECT files.*
-      FROM files
-      INNER JOIN product_files ON (files.id = product_files.file_id)
-      WHERE product_files.product_id = $1
-    `, [id]);
+  async findById(id) {
+    const results = await db.query(`
+    SELECT files.*
+    FROM files
+    LEFT JOIN product_files ON (files.id = product_files.file_id)
+    WHERE product_files.product_id = $1
+  `, [id]);
+
+    return results.rows;
   },
   async delete(id) {
     const results = await db.query(`
