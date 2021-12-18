@@ -84,7 +84,8 @@ const Base = {
     DELETE FROM ${this.table}
     WHERE id = ${id}
     `);
-  }
+  },
+  find
 }
 
 module.exports = Base;
