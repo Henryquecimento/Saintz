@@ -71,7 +71,7 @@ module.exports = {
         }
       });
 
-      return res.render("admin/products/show", { product }); // { product, files }
+      return res.render("admin/products/show", { product });
 
     } catch (err) {
       throw new Error(err);
