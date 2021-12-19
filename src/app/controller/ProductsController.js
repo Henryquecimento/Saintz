@@ -127,9 +127,13 @@ module.exports = {
       req.body.price = req.body.price.replace(/\D/g, "");
 
       if (req.body.old_price != req.body.price) {
-        const oldProduct = await Product.find(req.body.id);
+        const oldProduct = await LoadProduct.load("product", {
+          where: {
+            id: req.body.id
+          }
+        });
 
-        req.body.old_price = oldProduct.rows[0].price;
+        req.body.old_price = oldProduct.price.replace(/\D/g, "");;
       }
 
       await Product.update(req.body);
@@ -143,7 +147,7 @@ module.exports = {
     try {
       const results = await ProductFile.findById(req.body.id);
 
-      const filesPromise = results.rows.map(file => ProductFile.delete(file.id))
+      const filesPromise = results.map(file => ProductFile.delete(file.id))
 
       await Promise.all(filesPromise);
 
