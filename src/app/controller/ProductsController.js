@@ -79,23 +79,17 @@ module.exports = {
   },
   async edit(req, res) {
     try {
-      let results = await Product.find(req.params.id);
-      const product = results.rows[0];
+      const product = await LoadProduct.load("product", {
+        where: {
+          id: req.params.id
+        }
+      });
 
       if (!product) return res.send("Product not found!");
 
-      product.old_price = formatPrice(product.old_price);
-      product.price = formatPrice(product.price);
-
       const categories = await Category.findAll();
 
-      results = await ProductFile.findById(req.params.id);
-      const files = results.rows.map(file => ({
-        ...file,
-        src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`
-      }));
-
-      return res.render("admin/products/edit.njk", { product, categories, files });
+      return res.render("admin/products/edit.njk", { product, categories });
     } catch (err) {
       throw new Error(err);
     }
