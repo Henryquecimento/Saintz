@@ -21,7 +21,6 @@ Saintz is a little personal project that I've been planning some weeks ago, this
 - [PG][pg]
 - [PostgreSQL][postgresql]
 - [Multer][multer]
-- [Faker][faker]
 - [BcryptJs][bcryptjs]
 
 **:rocket: COMO ACESSAR / HOW TO ACCESS**
