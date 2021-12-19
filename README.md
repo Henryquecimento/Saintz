@@ -23,7 +23,6 @@ Saintz is a little personal project that I've been planning some weeks ago, this
 - [Multer][multer]
 - [Faker][faker]
 - [BcryptJs][bcryptjs]
-- [Nodemailer][nodemailer]
 
 **:rocket: COMO ACESSAR / HOW TO ACCESS**
 
@@ -40,3 +39,16 @@ npm install
 ```
 
 ## :gear: PROJECT STILL IN DEVELOPMENT :gear:
+
+[javascript]: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
+[html]: https://developer.mozilla.org/pt-BR/docs/Web/HTML
+[css]: https://developer.mozilla.org/pt-BR/docs/Web/CSS
+[njk]: https://mozilla.github.io/nunjucks/
+[lottie]: https://github.com/airbnb/lottie-web
+[nodejs]: https://nodejs.org/en/
+[express]: https://expressjs.com/pt-br/
+[pg]: https://github.com/brianc/node-postgres/tree/master/packages/pg
+[postgresql]: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+[multer]: https://github.com/expressjs/multer
+[nodemailer]: https://nodemailer.com/about/
+[bcryptjs]: https://www.npmjs.com/package/bcrypt
