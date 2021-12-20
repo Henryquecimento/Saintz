@@ -1,10 +1,11 @@
 const Category = require("../models/Category");
 const Product = require("../models/Product");
+const { LoadCategory } = require("../services/LoadCategoryServices");
 
 module.exports = {
 	async index(req, res) {
 		try {
-			const categories = await Category.findAll();
+			const categories = await LoadCategory.load("categories");
 
 			return res.render("admin/categories/index.njk", { categories });
 		} catch (err) {
@@ -38,14 +39,13 @@ module.exports = {
 	},
 	async show(req, res) {
 		try {
-			const category = await Category.findOne({
+			const category = await LoadCategory.load("category", {
 				where: {
 					id: req.params.id
 				}
 			});
 
-			let results = await Product.findByCategory(req.params.id);
-			const products = results.rows;
+			const products = await Product.findByCategory(req.params.id);
 
 			return res.render("admin/categories/show", { category, products });
 		} catch (err) {
@@ -86,8 +86,7 @@ module.exports = {
 	},
 	async delete(req, res) {
 		try {
-			const results = await Product.findByCategory(req.body.id);
-			const products = results.rows;
+			const products = await Product.findByCategory(req.body.id);
 
 			if (products.length == 0) {
 				await Category.delete(req.body.id);
