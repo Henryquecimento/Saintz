@@ -52,11 +52,11 @@
                 <div><strong>Description:</strong> {{product.description}}</div>
                 <div><strong>Quantity:</strong> {{product.quantity}}</div>
                 <div class='status'><strong>Status:</strong> 
-                    <span
-                    {% if product.status != 'Available' %}
-                    class='unvailable'
+                    {%if product.status == "1"%}
+                        <span>Available</span>
+                    {% else %}
+                        <span class='unvailable'>Unavailable</span>
                     {% endif %}
-                    >{{product.status}}</span>
                 </div>
                 <div><strong>Updated at:</strong> {{product.updated_at}}</div>
             </div>

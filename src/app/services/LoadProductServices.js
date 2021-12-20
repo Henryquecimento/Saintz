@@ -28,7 +28,6 @@ async function format(product) {
   product.files = files;
   product.price = formatPrice(product.price);
   product.old_price = formatPrice(product.old_price);
-  product.status = formatStatus(product.status);
   product.updated_at = date(product.updated_at).format;
 
   return product;
