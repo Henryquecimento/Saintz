@@ -2,7 +2,7 @@ const Product = require("../models/Product");
 const Category = require("../models/Category");
 const { LoadProduct } = require('../services/LoadProductServices');
 const ProductFile = require("../models/ProductFile");
-const { formatPrice } = require("../../lib/utils");
+const { LoadCategory } = require("../services/LoadCategoryServices");
 
 module.exports = {
   async index(req, res) {
@@ -16,7 +16,7 @@ module.exports = {
   },
   async create(req, res) {
     try {
-      const categories = await Category.findAll();
+      const categories = await LoadCategory.load("categories");
 
       return res.render("admin/products/create.njk", { categories });
     } catch (err) {
@@ -87,7 +87,7 @@ module.exports = {
 
       if (!product) return res.send("Product not found!");
 
-      const categories = await Category.findAll();
+      const categories = await LoadCategory.load("categories");
 
       return res.render("admin/products/edit.njk", { product, categories });
     } catch (err) {
@@ -136,7 +136,15 @@ module.exports = {
         req.body.old_price = oldProduct.price.replace(/\D/g, "");;
       }
 
-      await Product.update(req.body);
+      await Product.update(req.body.id, {
+        category_id: req.body.category_id,
+        name: req.body.name,
+        description: req.body.description,
+        old_price: req.body.old_price,
+        price: req.body.price,
+        quantity: req.body.quantity,
+        status: req.body.status,
+      });
 
       return res.redirect(`/admin/products/${req.body.id}`);
     } catch (err) {
