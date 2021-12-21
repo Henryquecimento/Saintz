@@ -1,24 +1,15 @@
 const db = require("./../../config/db");
+const Base = require("../models/Base");
+
+Base.init({ table: "users" });
 
 module.exports = {
+  ...Base,
   list() {
     return db.query(`
       SELECT * FROM USERS
       ORDER BY updated_at
     `);
-  },
-  post({ name, email, password }) {
-    const query = `
-      INSERT INTO users (
-        name,
-        email,
-        password
-      ) VALUES ($1, $2, $3)
-      RETURNING id
-    `;
-
-
-    return db.query(query, [name, email, password]);
   },
   async update(id, fields) {
     let query = `UPDATE users SET`;
