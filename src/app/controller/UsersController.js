@@ -43,7 +43,7 @@ module.exports = {
 			`
 		});
 
-		await User.post({
+		await User.create({
 			name,
 			email,
 			password: encryptedPassword
