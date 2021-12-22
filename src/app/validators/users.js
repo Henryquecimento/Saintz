@@ -1,10 +1,11 @@
 const { compare } = require('bcrypt');
 const User = require('../models/User');
+const { LoadUsers } = require('../services/LoadUserServices');
 
 async function show(req, res, next) {
   const { userId: id } = req.session;
 
-  const user = await User.findOne({
+  const user = await LoadUsers.load("user", {
     where: { id }
   });
 
@@ -17,11 +18,12 @@ async function show(req, res, next) {
 }
 
 async function update(req, res, next) {
-  const { id, password } = req.body;
+  const { userId: id } = req.session;
+  const { password } = req.body;
 
   if (!password) return res.send('Insert the password first to save the changes')
 
-  const user = await User.findOne({
+  const user = await LoadUsers.load("user", {
     where: { id }
   });
 
@@ -35,12 +37,14 @@ async function update(req, res, next) {
 }
 
 async function edit(req, res, next) {
+  const { userId: id } = req.session;
   const { password } = req.body;
 
-  if (!password) return res.send('Insert the password first to save the changes')
+  if (!password) return res.send('Insert the password first to save the changes');
 
-  const result = await User.find(req.session.userId);
-  const userAdmin = result.rows[0];
+  const userAdmin = await LoadUsers.load("user", {
+    where: { id }
+  });
 
   const passed = await compare(password, userAdmin.password);
 
