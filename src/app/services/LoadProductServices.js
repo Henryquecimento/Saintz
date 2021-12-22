@@ -1,6 +1,7 @@
 const Product = require("../models/Product");
+const { LoadCategory } = require("../services/LoadCategoryServices");
 const ProductFile = require("../models/ProductFile");
-const { formatPrice, formatStatus, date } = require("../../lib/utils");
+const { formatPrice, date } = require("../../lib/utils");
 
 async function getImage(productId) {
   let files = await ProductFile.findById(productId);
@@ -15,6 +16,12 @@ async function getImage(productId) {
 }
 
 async function format(product) {
+  const category = await LoadCategory.load("category", {
+    where: {
+      id: product.category_id
+    }
+  });
+
   const files = await getImage(product.id);
 
   if (files[0] != undefined) {
@@ -25,6 +32,7 @@ async function format(product) {
     product.filename = null;
   }
 
+  product.category_name = category.name;
   product.files = files;
   product.price = formatPrice(product.price);
   product.old_price = formatPrice(product.old_price);
