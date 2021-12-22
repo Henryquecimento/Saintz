@@ -2,11 +2,11 @@ const User = require('../models/User');
 const crypto = require('crypto');
 const { hash } = require('bcrypt');
 const mailer = require('../../lib/mailer');
+const { LoadUsers } = require('../services/LoadUserServices');
 
 module.exports = {
 	async index(req, res) {
-		const results = await User.list();
-		const users = results.rows;
+		const users = await LoadUsers.load("users");
 
 		return res.render('admin/users/index.njk', { users });
 	},
@@ -56,18 +56,22 @@ module.exports = {
 	},
 	async edit(req, res) {
 
-		const results = await User.find(req.params.id);
-		const user = results.rows[0];
+		const user = await LoadUsers.load("user", {
+			where: {
+				id: req.params.id
+			}
+		})
 
 		return res.render('admin/users/edit.njk', { user });
 	},
 	async put(req, res) {
 
-		const { id, name, email } = req.body;
+		const { id, name, email, is_admin } = req.body;
 
 		await User.update(id, {
 			name,
-			email
+			email,
+			is_admin
 		});
 
 		return res.render('admin/users/index.njk', {
