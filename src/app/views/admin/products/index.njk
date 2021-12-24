@@ -2,7 +2,7 @@
 {% import "parts/section-products.njk" as section%}
 
 {% block header %}
-    <title>Products - Maneger</title>
+    <title>Products - Manager</title>
 {% endblock header %}
 
 {% block contents %}
@@ -15,7 +15,7 @@
         </div>
 
 
-        {{ section.products(products) }}
+        {{ section.products(products, session) }}
 
     </section>
 {% endblock contents %}

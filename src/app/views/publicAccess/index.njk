@@ -5,7 +5,7 @@
     <title>SAINTZ | HOME</title>
 {% endblock head %}
 
-{% block content %}
+{% block contents %}
 <main>
 
     <div class="news container">
@@ -15,9 +15,9 @@
     <section class="last-added container">
         <h2>Last Added</h2>
         
-        {{ section.products(products) }}
+        {{ section.products(products, session) }}
 
     </section>    
 
 </main>
-{% endblock content %}
+{% endblock contents %}

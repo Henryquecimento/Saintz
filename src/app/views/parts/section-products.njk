@@ -1,4 +1,4 @@
-{% macro products(products) %}
+{% macro products(products, session) %}
 
 <div class="products-container grid">
   {% for product in products %}
@@ -6,11 +6,11 @@
         <div class="box image">
             <div class="highlight">
               {% if not product.files[0] %}
-                  <a href="/admin/products/{{ product.id }}">
+                  <a href="/products/{{product.id}}">
                       <img src="http://placehold.it/500x500?text=No Photo">
                   </a>
               {% else %}
-                <a href="/admin/products/{{ product.id }}">
+                <a href="/products/{{product.id}}">
                   <img 
                       src="{{ product.files[0].src }}" 
                       alt="{{ product.files[0].name }}"
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="product-info">
-            <a href="/admin/products/{{ product.id }}">
+            <a href="/products/{{ product.id }}">
                 <div class='name'>{{product.name}}</div>
             </a>  
             {% if product.old_price and product.old_price != product.price%}
@@ -29,10 +29,12 @@
             <div class='price'>{{product.price}}</div>
         </div>
 
-      {# if req.session #}
-        <div class='details'>
-            <a href="/admin/products/{{product.id}}">Details</a>
-        </div>
+        
+        {% if session.userId %}
+          <div class='details'>
+              <a href="/admin/products/{{product.id}}">Details</a>            
+          </div>
+        {% endif %}
         
     </div>
   {% endfor %}

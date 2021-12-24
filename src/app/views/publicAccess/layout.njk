@@ -6,7 +6,9 @@
 
         {% include 'parts/styles.njk'%}
 
-        {% block head %}{% endblock head %}
+        {% block head %}
+            <title>SAINTZ</title>
+        {% endblock head %}
 
     </head>
 
@@ -14,7 +16,7 @@
 
         {% include 'parts/header.njk'%}
         
-        {% block content %}{% endblock content %}
+        {% block contents %}{% endblock contents %}
 
     </body>
 
