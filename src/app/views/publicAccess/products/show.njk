@@ -1,0 +1,64 @@
+{% extends "publicAccess/layout.njk" %}
+
+{% block head %}
+   <title>SAINTZ - {{product.name}}</title>
+{% endblock head %}
+
+{% block contents %}
+    <section class="container">
+    
+        <div class="body box public">
+
+            <div class = "gallery">
+                <div class="highlight">
+                    {% if not product.img %}
+                        <img src="http://placehold.it/500x500?text=No Photo">
+                    {% else %}
+                        <img 
+                            src="{{ product.img }}" 
+                            alt="{{ product.filename }}"
+                        >
+                    {% endif %}
+                </div>
+
+                <div class="gallery-preview">
+                    {% for image in files %}
+                        <img 
+                            src="{{ image.src }}" 
+                            alt="{{ image.src }}"
+                            {% if loop.index0 == 0 %}
+                            class='active'
+                            {% endif %}
+                            onclick='ImageGallery.setImage(event)'
+                        >
+                    {% endfor %}
+                </div>
+            
+            </div>
+            
+
+            <div class="details body">
+                <h3>Details</h3>
+                <div class="product_text">
+                    <div>{{product.name}}</div>
+                    <div><span>Updated at:</span> {{product.updated_at}}</div>
+                </div>
+
+                <div class="buy_info">
+                    <div>{{product.description}}</div>
+                    <div class='price'>{{product.price}}</div>
+                    <div class='old_price'>{{product.old_price}}</div>
+                    
+                    <div>
+                        <button class="button">Add to Cart</button>
+                        <button class="button">Buy now</button>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+    </section>
+
+{% endblock contents %}

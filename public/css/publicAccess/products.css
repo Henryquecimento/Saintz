@@ -1,0 +1,16 @@
+section.container div.box.public {
+  display: grid;
+  grid-template-columns: 350px auto;
+  grid-gap: 18px;
+}
+
+section.container div.pubic .gallery {
+  display: flex;
+  flex-direction: column;
+
+}
+
+section.container div.public .details.body {
+  margin: initial;
+  width: 100%;
+}

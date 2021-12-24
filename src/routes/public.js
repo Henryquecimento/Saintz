@@ -7,4 +7,6 @@ const routes = express.Router();
 /* Public Access */
 routes.get("/", PublicController.index);
 
+routes.get('/products/:id', PublicController.products);
+
 module.exports = routes;

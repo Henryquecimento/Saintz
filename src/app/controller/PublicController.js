@@ -9,5 +9,18 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
+  },
+  async products(req, res) {
+    try {
+      const product = await LoadProduct.load("product", {
+        where: {
+          id: req.params.id
+        }
+      });
+
+      return res.render("publicAccess/products/show.njk", { product });
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 }
