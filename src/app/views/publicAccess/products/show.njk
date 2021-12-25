@@ -38,7 +38,6 @@
             
 
             <div class="details body">
-                <h3>Details</h3>
                 <div class="product_text">
                     <div>{{product.name}}</div>
                     <div><span>Updated at:</span> {{product.updated_at}}</div>
@@ -56,6 +55,42 @@
                 </div>
             </div>
 
+            <div class="other_products">
+                <h3>Other Popular products</h3>
+                <div class="products-container grid">
+                    {% for featured_product in products %}
+                       {% if featured_product.id != product.id %} 
+                            <div>
+                                <div class="box image">
+                                    <div class="highlight">
+                                    {% if not featured_product.files[0] %}
+                                        <a href="/products/{{featured_product.id}}">
+                                            <img src="http://placehold.it/500x500?text=No Photo">
+                                        </a>
+                                    {% else %}
+                                        <a href="/products/{{featured_product.id}}">
+                                        <img 
+                                            src="{{ featured_product.files[0].src }}" 
+                                            alt="{{ featured_product.files[0].name }}"
+                                        >
+                                        </a>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <a href="/products/{{ featured_product.id }}">
+                                        <div class='name'>{{featured_product.name}}</div>
+                                    </a>  
+                                    {% if featured_product.old_price and featured_product.old_price != featured_product.price%}
+                                        <div class='oldPrice'>{{featured_product.old_price}}</div>
+                                    {% endif %}
+                                    <div class='price'>{{featured_product.price}}</div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
             
         </div>
 
