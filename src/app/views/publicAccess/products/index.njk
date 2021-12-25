@@ -1,0 +1,8 @@
+{% extends "publicAccess/layout.njk" %}
+{% import "parts/section-products.njk" as section %}
+
+{% block contents %}
+  <section class="container">
+    {{ section.products(products, session) }}
+  </section>
+{% endblock contents %}
