@@ -68,16 +68,9 @@ header div.container div.links {
   gap: 32px;
 }
 
-header .container .nav_logo a,
 header .container nav .nav_links a {
   color: #e9e9e9;
   text-decoration: none;
-}
-
-header .container .nav_logo a {
-  font-size: 18px;
-  line-height: 20px;
-  font-weight: bold;
 }
 
 /* Logout button */
