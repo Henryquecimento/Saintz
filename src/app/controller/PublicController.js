@@ -33,5 +33,8 @@ module.exports = {
     } catch (err) {
       throw new Error(err);
     }
+  },
+  about(req, res) {
+    return res.render('publicAccess/about.njk')
   }
 }
