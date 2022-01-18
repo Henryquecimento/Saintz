@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS saintzDB;
 CREATE DATABASE saintzDB;
 
+
 CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
   "category_id" int,
@@ -46,6 +47,15 @@ updated_at TIMESTAMP DEFAULT(now())
 );
 
 ALTER TABLE products ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
+
+CREATE TABLE product_files (
+id SERIAL PRIMARY KEY,
+product_id int,
+file_id int
+);
+
+ALTER TABLE "product_files" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
+ALTER TABLE "product_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
 
 /* Triggers And Procedures */
 
